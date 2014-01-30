@@ -27,3 +27,19 @@ This project is under active development so things will change dramatically as i
 [vjs]: http://vanilla-js.com
 [ror]: http://rubyonrails.org
 [siz]: http://sizzlejs.com
+
+## Date Extensions
+
+The date helpers in Sprinkles are built right onto `Date.prototype` because `d.tomorrow()` reads much better than `DateExtensions.tomorrow(d)`.
+
+``` js
+var d = new Date(1986, 0, 24, 20, 25); // Jan 24th, 1986 at 20:25
+d.beginningOfDay();                    // Jan 24th, 1986 at 00:00
+d.endOfDay();                          // Jan 24th, 1986 at 23:59
+d.beginningOfMonth();                  // Jan  1st, 1986 at 00:00
+d.endOfMonth();                        // Jan 31st, 1986 at 23:59
+d.tomorrow();                          // Jan 25th, 1986 at 20:25
+d.yesterday();                         // Jan 23rd, 1986 at 20:25
+d.monthName();                         // "January"
+d.dayName();                           // "Friday"
+```
