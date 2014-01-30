@@ -1,7 +1,7 @@
 Sprinkles
 =========
 
-Sprinks is the [ActiveSupport][as] of Vanilla [JS][vjs].
+Sprinks is the [ActiveSupport][as] of [Vanilla JS][vjs].
 
 The goal of this project is to isolate a small collection of helpers and extensions to make our lives as front-end engineers a little easier. Just like ActiveSupport has done for [Ruby on Rails][ror] engineers.
 
