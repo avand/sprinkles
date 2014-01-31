@@ -56,3 +56,19 @@ ActiveSupport has a bunch of slick [string inflections][inf]. The most popular a
 ```
 
 [inf]: http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html
+
+## XHR (AJAX)
+
+Modern web applications frequently talk to servers with JSON over HTTP. Creating an `XMLHttpRequest` object from scratch is tedious, so `get` and `getJSON` have been added as methods on `window` as convenience.
+
+``` js
+window.get("http://example.com/plain-text",
+  function(text) { console.log(text) }, // success
+  function(text) { console.log(text) }  // error
+);
+
+window.getJSON("http://example.com/json",
+  function(object) { console.log(object) }, // success
+  function(object) { console.log(object) }  // error
+})
+```
