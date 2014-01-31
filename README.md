@@ -43,3 +43,16 @@ d.yesterday();                         // Jan 23rd, 1986 at 20:25
 d.monthName();                         // "January"
 d.dayName();                           // "Friday"
 ```
+
+## String Inflections
+
+ActiveSupport has a bunch of slick [string inflections][inf]. The most popular are represented in Sprinkles.
+
+``` js
+"1".ordinalize()      // "1st"
+"22".ordinalize()     // "22nd"
+"cat".pluralize()     // "cats" (coming soon, maybe?)
+"dogs".singularize(); // "dog"  (coming soon, maybe?)
+```
+
+[inf]: http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html
