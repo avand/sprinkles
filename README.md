@@ -123,3 +123,24 @@ window.getJSON("http://example.com/json",
   function(object) { console.log(object) }  // error
 })
 ```
+
+## Development
+
+Sprinkles uses [Grunt][grn] to run development-oriented tasks. Grunt relies on [Node Packaged Modules][npm] (NPM). You can install NPM with [Homebrew][hmb]. With NPM installed and from inside the Sprinkles project root run:
+
+``` sh
+npm install
+```
+
+This is the Ruby equivalent of running `bundle install`. Now you can run the following tasks individually:
+
+* `grunt concat`
+* `grunt qunit`
+* `grunt jshint`
+* `grunt uglify`
+
+You can also run `grunt test` to validate syntax and test. When you're work is done, run `grunt` to validate, test, concatenate, and minify.
+
+[grn]: http://gruntjs.com
+[npm]: https://www.npmjs.org
+[hmb]: http://brew.sh
