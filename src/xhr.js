@@ -3,9 +3,13 @@ window.get = function(url, success, error) {
 
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
-      xhr.status == 200 ? success(xhr.responseText) : error(xhr.responseText)
+      if (xhr.status == 200) {
+        success(xhr.responseText);
+      } else {
+        error(xhr.responseText);
+      }
     }
-  }
+  };
 
   xhr.open("GET", url);
   xhr.send();

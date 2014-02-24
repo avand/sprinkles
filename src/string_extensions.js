@@ -12,4 +12,4 @@ String.prototype.ordinalize = function() {
       default: return number + "th";
     }
   }
-}
+};
