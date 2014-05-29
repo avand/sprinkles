@@ -9,6 +9,11 @@ What you'll find in this project is:
 
 * [Array extensions](#array-extensions):
   * `flatten()`
+* [Cookies](#cookies)
+  * `setItem()`
+  * `getItem()`
+  * `removeItem()`
+  * `clear()`
 * [Date extensions](#date-extensions):
   * `beginningOfDay()`
   * `endOfDay()`
@@ -52,18 +57,31 @@ pies.forEach(function(pie, i) {
 
 pies.map(function(pie, i) {
   return pie + " pie";
-}); // => ["apple pie", "pecan pie", "cherry pie"]
+}); // Returns ["apple pie", "pecan pie", "cherry pie"]
 
 pies.reduce(function(previousPie, currentPie) {
   return previousPie + "," + currentPie;
-}); // => "apple,pecan,cherry"
+}); // Returns "apple,pecan,cherry"
 ```
 
 Sprinkles adds `flatten()` to `Array.prototype`.
 
 ``` js
-[[1], [2], [3]].flatten(); // => [1, 2, 3]
+[[1], [2], [3]].flatten(); // Returns [1, 2, 3]
 ```
+
+## Cookies
+
+Working with cookies isn't very fun if all you have is `document.cookie`. Sprinkles adds a `cookies` object that makes managing cookies a little easier. The API is designed to closely match that of `localStorage`.
+
+``` js
+cookies.setItem("foo", "bar"); // Write a cookie, "foo", with value "bar"
+cookies.getItem("foo");        // Returns "bar"
+cookies.removeItem("foo");     // Remove cookie, "foo"
+cookies.clear();               // Remove all cookies
+```
+
+Sprinks always assumes the path on all your cookies is `/` and does not support cookies that specify `domain`, `max-age`, `expires`, or `secure`. Maybe one day.
 
 ## Date Extensions
 
