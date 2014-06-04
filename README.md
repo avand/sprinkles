@@ -10,19 +10,14 @@ What you'll find in this project is:
 * [Array extensions](#array-extensions):
   * `flatten()`
 * [Cookies](#cookies)
-  * `setItem()`
-  * `getItem()`
+  * `setItem()`, `getItem()`
   * `removeItem()`
   * `clear()`
 * [Date extensions](#date-extensions):
-  * `beginningOfDay()`
-  * `endOfDay()`
-  * `beginningOfMonth()`
-  * `endOfMonth()`
-  * `monthName()`
-  * `dayName()`
-  * `tomorrow()`
-  * `yesterday()`
+  * `beginningOfDay()`, `endOfDay()`
+  * `beginningOfMonth()`, `endOfMonth()`
+  * `monthName()`, `dayName()`
+  * `tomorrow()`, `yesterday()`
 * [String inflections](#string-inflections):
   * `ordinalize()`
 * [XHR helpers](#xhr-helpers):
@@ -37,16 +32,19 @@ What you won't find in this project is:
 * DOM selection (e.g., [Sizzle][siz])
 * Anything a modern browser can alrady do
 
+Sprinkles is of the opinion that selectively extending existing JavaScript objects is manageable. You may [disagree][ext] and I'd love to know why.
+
 This project is under active development so things will change dramatically as it matures. For contributions, please fork and submit pull requests.
 
 [as]:  https://github.com/rails/rails/tree/master/activesupport
 [vjs]: http://vanilla-js.com
 [ror]: http://rubyonrails.org
 [siz]: http://sizzlejs.com
+[ext]: http://perfectionkills.com/whats-wrong-with-extending-the-dom/
 
 ## Arrays Extensions
 
-Your browser is all grown up! Let vanilla JS `loop()`, `map()`, and `reduce()` arrays for you.
+Your browser is all grown up! Let it `loop()`, `map()`, and `reduce()` your arrays.
 
 ``` js
 var pies = ["apple", "pecan", "cherry"];
@@ -81,7 +79,7 @@ cookies.removeItem("foo");     // Remove cookie, "foo"
 cookies.clear();               // Remove all cookies
 ```
 
-Sprinks always assumes the path on all your cookies is `/` and does not support cookies that specify `domain`, `max-age`, `expires`, or `secure`. Maybe one day.
+Sprinks always assumes the path on all your cookies is `/` and does not support cookies that specify `domain`, `max-age`, `expires`, or `secure` — maybe one day.
 
 ## Date Extensions
 
@@ -113,27 +111,27 @@ result.textContent = "One more thing...";         // Set the content of an eleme
 results.appendChild(result);                      // Add an element as a child
 ```
 
+If you do a lot of this, maybe you should write a function like `createElement(name, content, parent)`.
+
 ## String Inflections
 
-ActiveSupport has a bunch of slick [string inflections][inf]. The most popular are represented in Sprinkles.
+ActiveSupport has a bunch of slick [string inflections][inf]. Sprinkles just has the one for now.
 
 ``` js
-"1".ordinalize()      // "1st"
-"22".ordinalize()     // "22nd"
-"cat".pluralize()     // "cats" (coming soon, maybe?)
-"dogs".singularize(); // "dog"  (coming soon, maybe?)
+"1".ordinalize()  // "1st"
+"22".ordinalize() // "22nd"
 ```
 
 [inf]: http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html
 
 ## XHR (AJAX)
 
-Modern web applications frequently talk to servers with JSON over HTTP. Creating an `XMLHttpRequest` object from scratch is tedious, so `get()` and `getJSON()` have been added as methods on `window` as convenience.
+Creating an `XMLHttpRequest` object from scratch is tedious, so `get()` and `getJSON()` have been added as methods on `window` as convenience.
 
 ``` js
 window.get("http://example.com/plain-text",
-  function(text) { console.log(text) }, // success
-  function(text) { console.log(text) }  // error
+  function(text) { console.log(text) },     // success
+  function(text) { console.log(text) }      // error
 );
 
 window.getJSON("http://example.com/json",
