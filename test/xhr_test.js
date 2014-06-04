@@ -8,6 +8,34 @@ module("xhr", {
   }
 });
 
+test("post success", function() {
+  var success = sinon.spy(), error = sinon.spy();
+  var ex = {
+    name: "DCK",
+    age: 22
+  };
+  window.post("/foo.txt", ex, success, error);
+
+  this.server.respond("POST", "/foo.txt", [200, {}, "success"]);
+
+  ok(success.calledWith("success"));
+  ok(error.notCalled);
+});
+
+test("post error", function() {
+  var success = sinon.spy(), error = sinon.spy();
+  var ex = {
+    name: "DCK",
+    age: 22
+  };
+
+  window.post("/foo.txt", ex, success, error);
+  this.server.respond("POST", "/foo.txt", [500, {}, "error"]);
+
+  ok(success.notCalled);
+  ok(error.calledWith("error"));
+});
+
 test("get success", function() {
   var success = sinon.spy(), error = sinon.spy();
 
