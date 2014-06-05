@@ -13,3 +13,19 @@ String.prototype.ordinalize = function() {
     }
   }
 };
+
+String.prototype.truncate = function (position) {
+  var string = this.slice(0, position);
+  string += '...';
+
+  return string;
+};
+
+String.prototype.truncateFromCenter = function (position) {
+  var beginningString = this.slice(0, position / 2),
+      endString = this.slice(this.length - position / 2, this.length);
+  
+  var string = beginningString +'...'+ endString;
+
+  return string;
+};
