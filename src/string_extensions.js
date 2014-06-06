@@ -15,17 +15,31 @@ String.prototype.ordinalize = function() {
 };
 
 String.prototype.truncate = function (position) {
+  if (!position) {
+    throw "No parameter found";
+  }
   var string = this.slice(0, position);
   string += '...';
 
   return string;
 };
 
-String.prototype.truncateFromCenter = function (position) {
-  var beginningString = this.slice(0, position / 2),
-      endString = this.slice(this.length - position / 2, this.length);
+String.prototype.truncateFromCenter = function (position, separator) {
+  var length = this.length,
+      separator = !!separator ? separator : '...';
+
+  if (length <= separator.length || position <= separator.length) {
+    return this.slice(0, position);
+  }
+
+  var middle = (position - separator.length) / 2.0,
+      separatorStart = Math.ceil(middle),
+      separatorEnd = length - Math.floor(middle);
+
+  var beginningString = this.slice(0, separatorStart),
+      endString = this.slice(separatorEnd, length);
   
-  var string = beginningString +'...'+ endString;
+  var string = beginningString + separator + endString;
 
   return string;
 };
