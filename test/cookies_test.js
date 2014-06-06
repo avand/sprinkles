@@ -3,7 +3,7 @@ module("cookies", {
     document.cookie.split(";").forEach(function(cookie) {
       var key = cookie.replace(/=.*/, "");
       document.cookie = key + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-    })
+    });
   },
 
   setup: function() {
@@ -32,4 +32,4 @@ test("clear", function() {
   document.cookie = "bar=baz";
   cookies.clear();
   equal(document.cookie, "");
-})
+});

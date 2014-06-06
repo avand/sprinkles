@@ -13,3 +13,17 @@ test("ordinalize", function() {
   equal("23".ordinalize(), "23rd");
   equal("-1".ordinalize(), "-1st");
 });
+
+
+test("truncate", function () {
+  equal("Hello World".truncate(5), "Hello...");
+});
+
+test("truncateFromCenter", function () {
+  equal('foo'.truncateFromCenter(1), 'f');
+  equal('foo'.truncateFromCenter(3), 'foo');
+  equal('foobar'.truncateFromCenter(4), 'f...');
+  equal('foobar'.truncateFromCenter(4, '-'), 'fo-r');
+  equal('foobarbaz'.truncateFromCenter(6), 'fo...z');
+});
+
