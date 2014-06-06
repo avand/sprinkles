@@ -17,13 +17,14 @@ test("ordinalize", function() {
 
 test("truncate", function () {
   equal("Hello World".truncate(5), "Hello...");
+  equal("Hi".truncate(5), "Hi...");
+  equal("Hi".truncate(0), "...");
 });
 
 test("truncateFromCenter", function () {
-  equal('foo'.truncateFromCenter(1), 'f');
-  equal('foo'.truncateFromCenter(3), 'foo');
-  equal('foobar'.truncateFromCenter(4), 'f...');
-  equal('foobar'.truncateFromCenter(4, '-'), 'fo-r');
-  equal('foobarbaz'.truncateFromCenter(6), 'fo...z');
+  equal("foo".truncateFromCenter(1), "f");
+  equal("foo".truncateFromCenter(3), "foo");
+  equal("foobar".truncateFromCenter(4), "f...");
+  equal("foobar".truncateFromCenter(4, "-"), "fo-r");
+  equal("foobarbaz".truncateFromCenter(6), "fo...z");
 });
-
