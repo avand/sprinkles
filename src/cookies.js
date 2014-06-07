@@ -1,4 +1,4 @@
-var $cookies = {
+Document.prototype.$cookies = {
   setItem: function(key, value) {
     document.cookie = key + "=" + value + "; path=/";
   },

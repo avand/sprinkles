@@ -12,31 +12,31 @@ module("cookies", {
 });
 
 test("setItem", function() {
-  $cookies.setItem("foo", "bar");
+  document.$cookies.setItem("foo", "bar");
   equal(document.cookie, "foo=bar");
 });
 
 test("getItem", function() {
-  equal($cookies.getItem("foo"), null);
+  equal(document.$cookies.getItem("foo"), null);
   document.cookie = "foo=bar; path=/";
-  equal($cookies.getItem("foo"), "bar");
+  equal(document.$cookies.getItem("foo"), "bar");
 });
 
 test("getItem", function() {
-  $cookies.removeItem("foo");
+  document.$cookies.removeItem("foo");
   equal(document.cookie, "");
 });
 
 test("clear", function() {
   document.cookie = "foo=bar; expires=Wed, 24 Jan 2024 00:00:01 GMT; path=/";
   document.cookie = "bar=baz; expires=Wed, 24 Jan 2024 00:00:01 GMT; path=/";
-  $cookies.clear();
+  document.$cookies.clear();
   equal(document.cookie, "");
 })
 
 test("setItem, getItem, and removeItem", function() {
-  $cookies.setItem("foo", "bar");
-  equal($cookies.getItem("foo"), "bar");
-  $cookies.removeItem("foo");
-  equal($cookies.getItem("foo"), null)
+  document.$cookies.setItem("foo", "bar");
+  equal(document.$cookies.getItem("foo"), "bar");
+  document.$cookies.removeItem("foo");
+  equal(document.$cookies.getItem("foo"), null)
 })
