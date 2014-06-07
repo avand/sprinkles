@@ -13,3 +13,28 @@ String.prototype.$ordinalize = function() {
     }
   }
 };
+
+String.prototype.truncate = function (position, separator) {
+  var string = this.slice(0, position),
+  separator  = !separator ? '...' : separator;
+
+  return string + separator;
+};
+
+String.prototype.truncateFromCenter = function (position, separator) {
+  var length = this.length,
+  separator  = !separator ? '...' : separator;
+
+  if (length <= separator.length || position <= separator.length) {
+    return this.slice(0, position);
+  }
+
+  var middle     = (position - separator.length) / 2.0,
+  separatorStart = Math.ceil(middle),
+  separatorEnd   = length - Math.floor(middle);
+
+  var beginningString = this.slice(0, separatorStart),
+  endString           = this.slice(separatorEnd, length);
+  
+  return beginningString + separator + endString;
+};
