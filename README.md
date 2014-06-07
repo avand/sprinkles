@@ -9,22 +9,12 @@ Though syntatically optimal, monkey patching is general considered a [bad idea][
 
 In Sprinkles, you'll find:
 
-* [Array extensions](#array-extensions):
-  * `$flatten()`
+* [Array extensions](#array-extensions)
 * [Cookies](#cookies)
-  * `setItem()`, `getItem()`
-  * `removeItem()`
-  * `clear()`
-* [Date extensions](#date-extensions):
-  * `$beginningOfDay()`, `$endOfDay()`
-  * `beginningOfMonth()`, `$endOfMonth()`
-  * `$monthName()`, `$dayName()`
-  * `$tomorrow()`, `$yesterday()`
-* [String inflections](#string-inflections):
-  * `$ordinalize()`
-* [XHR helpers](#xhr-helpers):
-  * `$get()`
-  * `$getJSON()`
+* [Date extensions](#date-extensions)
+* [Query string params](#query-string-params)
+* [String inflections](#string-inflections)
+* [XHR helpers](#xhr-helpers)
 
 What you won't find in this project is:
 
@@ -111,6 +101,23 @@ results.appendChild(result);                      // Add an element as a child
 ```
 
 If you do a lot of this, maybe you should write a function like `createElement(name, content, parent)`.
+
+## Query String Params
+
+Read the query string params off any URL with the class methods Sprinkles adds to `Location`:
+
+``` js
+Location.$getParams("http://example.com/?a=1&b=2")     // Returns { "a": "1", "b": "2" }
+Location.$getParam("http://example.com/?a=1&b=2", "a") // Returns "1"
+```
+
+Sprinkles also adds instance methods `Location` to read query string params from the current window's location:
+
+``` js
+// Assuming window.location = "http://example.com/?a=1&b=2"
+window.location.$getParams()   // Returns { "a": "1", "b": "2" }
+window.location.$getParam("a") // Returns "1"
+```
 
 ## String Inflections
 
