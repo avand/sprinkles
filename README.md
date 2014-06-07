@@ -32,7 +32,7 @@ What you won't find in this project is:
 * Browser backwards-compatibility
 * Heavy-handed DOM manipulation (e.g., `wrapAll()`)
 * DOM selection (e.g., [Sizzle][siz])
-* Anything a modern browser can alrady do
+* Anything a modern browser can already do
 
 This project is under active development so things will change dramatically as it matures. For contributions, please fork and submit pull requests.
 
