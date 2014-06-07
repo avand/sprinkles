@@ -3,7 +3,7 @@ module("cookies", {
     document.cookie.split(";").forEach(function(cookie) {
       var key = cookie.replace(/=.*/, "");
       document.cookie = key + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-    })
+    });
   },
 
   setup: function() {
@@ -32,11 +32,11 @@ test("clear", function() {
   document.cookie = "bar=baz; expires=Wed, 24 Jan 2024 00:00:01 GMT; path=/";
   document.$cookies.clear();
   equal(document.cookie, "");
-})
+});
 
 test("setItem, getItem, and removeItem", function() {
   document.$cookies.setItem("foo", "bar");
   equal(document.$cookies.getItem("foo"), "bar");
   document.$cookies.removeItem("foo");
-  equal(document.$cookies.getItem("foo"), null)
-})
+  equal(document.$cookies.getItem("foo"), null);
+});
