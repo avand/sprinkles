@@ -1,6 +1,6 @@
 {
   "name":    "sprinkles",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "devDependencies": {
     "grunt":                "~0.4.2",
     "grunt-contrib-concat": "~0.3.0",
