@@ -1,4 +1,4 @@
-var cookies = {
+var $cookies = {
   setItem: function(key, value) {
     document.cookie = key + "=" + value + "; path=/";
   },

@@ -1,4 +1,4 @@
-String.prototype.ordinalize = function() {
+String.prototype.$ordinalize = function() {
   var number = parseInt(this),
       abs    = Math.abs(number);
 

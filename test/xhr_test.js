@@ -11,7 +11,7 @@ module("xhr", {
 test("get success", function() {
   var success = sinon.spy(), error = sinon.spy();
 
-  window.get("/foo.txt", success, error);
+  window.$get("/foo.txt", success, error);
   this.server.respond("GET", "/foo.txt", [200, {}, "success"]);
 
   ok(success.calledWith("success"));
@@ -21,7 +21,7 @@ test("get success", function() {
 test("get error", function() {
   var success = sinon.spy(), error = sinon.spy();
 
-  window.get("/foo.txt", success, error);
+  window.$get("/foo.txt", success, error);
   this.server.respond("GET", "/foo.txt", [500, {}, "error"]);
 
   ok(success.notCalled);
@@ -31,7 +31,7 @@ test("get error", function() {
 test("getJSON success", function() {
   var success = sinon.spy(), error = sinon.spy();
 
-  window.getJSON("/foo.json", success, error);
+  window.$getJSON("/foo.json", success, error);
   this.server.respond("GET", "/foo.json", [200, {}, '{ "foo": "bar" }']);
 
   ok(success.calledWith({ foo: "bar" }));
@@ -41,7 +41,7 @@ test("getJSON success", function() {
 test("getJSON error", function() {
   var success = sinon.spy(), error = sinon.spy();
 
-  window.getJSON("/foo.json", success, error);
+  window.$getJSON("/foo.json", success, error);
   this.server.respond("GET", "/foo.json", [500, {}, '{ "foo": "bar" }']);
 
   ok(success.notCalled);
