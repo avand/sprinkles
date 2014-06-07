@@ -1,4 +1,4 @@
-String.prototype.ordinalize = function() {
+String.prototype.$ordinalize = function() {
   var number = parseInt(this),
       abs    = Math.abs(number);
 
@@ -14,27 +14,26 @@ String.prototype.ordinalize = function() {
   }
 };
 
-String.prototype.truncate = function (position, separator) {
-  var string = this.slice(0, position),
-  separator  = !separator ? '...' : separator;
+String.prototype.$truncate = function (length, omission) {
+  var string = this.slice(0, length),
+  omission   = !omission ? '...' : omission;
 
-  return string + separator;
+  return string + omission;
 };
 
-String.prototype.truncateFromCenter = function (position, separator) {
-  var length = this.length,
-  separator  = !separator ? '...' : separator;
+String.prototype.$truncateFromCenter = function (length, omission) {
+  var omission   = !omission ? '...' : omission;
 
-  if (length <= separator.length || position <= separator.length) {
-    return this.slice(0, position);
+  if (this.length <= omission.length || length <= omission.length) {
+    return this.slice(0, length);
   }
 
-  var middle     = (position - separator.length) / 2.0,
-  separatorStart = Math.ceil(middle),
-  separatorEnd   = length - Math.floor(middle);
+  var middle    = (length - omission.length) / 2.0,
+  omissionStart = Math.ceil(middle),
+  omissionEnd   = this.length - Math.floor(middle);
 
-  var beginningString = this.slice(0, separatorStart),
-  endString           = this.slice(separatorEnd, length);
+  var beginningString = this.slice(0, omissionStart),
+  endString           = this.slice(omissionEnd, this.length);
   
-  return beginningString + separator + endString;
+  return beginningString + omission + endString;
 };
