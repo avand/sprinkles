@@ -14,7 +14,7 @@ In Sprinkles, you'll find:
 * [Date extensions](#date-extensions)
 * [Query string params](#query-string-params)
 * [String inflections](#string-inflections)
-* [XHR helpers](#xhr-helpers)
+* [XHR helpers](#xhr-ajax)
 
 What you won't find in this project is:
 
@@ -31,7 +31,7 @@ This project is under active development so things will change dramatically as i
 [siz]: http://sizzlejs.com
 [red]: http://www.reddit.com/r/javascript/comments/279ion/sprinkles_the_activesupport_of_vanilla_js/
 
-## Arrays Extensions
+## Array Extensions
 
 Your browser is all grown up! Let it `loop()`, `map()`, and `reduce()` your arrays.
 
