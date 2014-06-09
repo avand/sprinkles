@@ -40,6 +40,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-qunit");
   grunt.loadNpmTasks("grunt-contrib-uglify");
 
-  grunt.registerTask("test",    ["jshint", "connect", "qunit"]);
   grunt.registerTask("default", ["test", "concat", "uglify"]);
+  grunt.registerTask("build",   ["jshint", "concat", "uglify"]);
+  grunt.registerTask("test",    ["jshint", "connect", "qunit"]);
 };
