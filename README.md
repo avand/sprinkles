@@ -157,12 +157,16 @@ npm install
 This is the Ruby equivalent of running `bundle install`. Now you can run the following tasks individually:
 
 * `grunt concat`
-* `grunt qunit`
 * `grunt jshint`
+* `grunt qunit`
 * `grunt uglify`
 
-You can also run `grunt test` to validate syntax and test. When you're work is done, run `grunt` to validate, test, concatenate, and minify.
+Unfortunately, the tests [don't currently pass][i10] from the command line. This is due to the fact that PhantomJS, which drives the headless tests, is not a browser. This means that things like `document.cookie` and `window.location` don't behave like you'd expect. It seems sensible that running tests in-browser takes priority over running them from the command line so for now to run them boot up Sprinkles in web server (e.g., `python -m SimpleHTTPServer 8080`) and hit the test file directly (e.g. http://localhost:8080/test/index.html). If you're feeling especially debuggy, run `grunt test` from the console.
+
+When you're done with a feature, you should [semantically](sem) increment the version number in `package.json` and run `grunt build` to update the distribution files.
 
 [grn]: http://gruntjs.com
 [npm]: https://www.npmjs.org
 [hmb]: http://brew.sh
+[i10]: https://github.com/canaryup/sprinkles/issues/10
+[sem]: http://semver.org
