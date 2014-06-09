@@ -10,11 +10,20 @@ module.exports = function(grunt) {
         dest: "dist/<%= pkg.name %>-<%= pkg.version %>.js"
       }
     },
-    qunit: {
-      files: ["test/**/*.html"]
+    connect: {
+      server: {
+        options: { port: "8000", base: "." }
+      }
     },
     jshint: {
       files: ["Gruntfile.js", "src/**/*.js", "test/*.js"],
+    },
+    qunit: {
+      all: {
+        options: {
+          urls: ["http://localhost:8000/test/index.html"]
+        }
+      }
     },
     uglify: {
       dist: {
@@ -26,10 +35,11 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks("grunt-contrib-concat");
-  grunt.loadNpmTasks("grunt-contrib-qunit");
+  grunt.loadNpmTasks("grunt-contrib-connect");
   grunt.loadNpmTasks("grunt-contrib-jshint");
+  grunt.loadNpmTasks("grunt-contrib-qunit");
   grunt.loadNpmTasks("grunt-contrib-uglify");
 
-  grunt.registerTask("test",    ["jshint", "qunit"]);
+  grunt.registerTask("test",    ["jshint", "connect", "qunit"]);
   grunt.registerTask("default", ["test", "concat", "uglify"]);
 };
