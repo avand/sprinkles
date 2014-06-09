@@ -24,7 +24,7 @@ test("Location.prototype.$getParams()", function() {
   ok(Location.$getParams.calledWithExactly(""));
 
   Location.$getParams.restore();
-})
+});
 
 test("Location.prototype.$getParam()", function() {
   this.spy(Location, "$getParam");
@@ -34,4 +34,4 @@ test("Location.prototype.$getParam()", function() {
   ok(Location.$getParam.calledWithExactly("", "a"));
 
   Location.$getParam.restore();
-})
+});

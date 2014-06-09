@@ -91,7 +91,7 @@ Date.prototype.$yesterday = function() {
 
 Location.$getParam = function(url, key) {
   return this.$getParams(url)[key];
-}
+};
 
 Location.prototype.$getParams = function() {
   return this.constructor.$getParams(this.search);
