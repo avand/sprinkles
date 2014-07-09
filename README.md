@@ -51,13 +51,13 @@ pies.reduce(function(previousPie, currentPie) {
 }); // Returns "apple,pecan,cherry"
 ```
 
-Sprinkles adds `$flatten()` to `Array.prototype`.
+Sprinkles adds **`$flatten()`** to `Array.prototype`.
 
 ``` js
 [[1], [2], [3]].$flatten(); // Returns [1, 2, 3]
 ```
 
-Sprinkles also adds `$groupBy()`.
+Sprinkles also adds **`$groupBy()`**.
 
 ``` js
 ["cat", "dog", "turtle"].$groupBy(function(animal) {
@@ -69,7 +69,7 @@ Sprinkles also adds `$groupBy()`.
 
 ## Cookies
 
-Working with cookies isn't very fun if all you have is `document.cookie`. Sprinkles adds `document.$cookies` that makes managing cookies a little easier. The API is designed to closely match that of `localStorage`.
+Working with cookies isn't very fun if all you have is `document.cookie`. Sprinkles adds **`document.$cookies`** that makes managing cookies a little easier. The API is designed to closely match that of `localStorage`.
 
 ``` js
 document.$cookies.setItem("foo", "bar"); // Write a cookie, "foo", with value "bar"
@@ -82,18 +82,18 @@ Sprinkles always assumes the path on all your cookies is `/` and does not suppor
 
 ## Date Extensions
 
-Manipulating a date in plain old JavaScript is no fun. Sprinkles makes it better.
+Manipulating a dates in JavaScript sucks. Sprinkles makes it suck less.
 
 ``` js
 var d = new Date(1986, 0, 24, 20, 25); // Jan 24th, 1986 at 20:25
-d.$beginningOfDay();                    // Jan 24th, 1986 at 00:00
-d.$endOfDay();                          // Jan 24th, 1986 at 23:59
-d.$beginningOfMonth();                  // Jan  1st, 1986 at 00:00
-d.$endOfMonth();                        // Jan 31st, 1986 at 23:59
-d.$tomorrow();                          // Jan 25th, 1986 at 20:25
-d.$yesterday();                         // Jan 23rd, 1986 at 20:25
-d.$monthName();                         // "January"
-d.$dayName();                           // "Friday"
+d.$beginningOfDay();                   // Jan 24th, 1986 at 00:00
+d.$endOfDay();                         // Jan 24th, 1986 at 23:59
+d.$beginningOfMonth();                 // Jan  1st, 1986 at 00:00
+d.$endOfMonth();                       // Jan 31st, 1986 at 23:59
+d.$tomorrow();                         // Jan 25th, 1986 at 20:25
+d.$yesterday();                        // Jan 23rd, 1986 at 20:25
+d.$monthName();                        // "January"
+d.$dayName();                          // "Friday"
 ```
 
 ## DOM Manipulation
@@ -110,7 +110,7 @@ result.textContent = "One more thing...";         // Set the content of an eleme
 results.appendChild(result);                      // Add an element as a child
 ```
 
-If you do a lot of this, maybe you should write a function like `createElement(name, content, parent)`.
+If you do a lot of this maybe you should write a function like `createElement(name, content, parent)` or use jQuery (gasp!).
 
 ## Query String Params
 
@@ -121,10 +121,10 @@ Location.$getParams("http://example.com/?a=1&b=2")     // Returns { "a": "1", "b
 Location.$getParam("http://example.com/?a=1&b=2", "a") // Returns "1"
 ```
 
-Sprinkles also adds instance methods `Location` to read query string params from the current window's location:
+Sprinkles also adds instance methods `Location.prototype` to read query string params from the current window's location:
 
 ``` js
-// Assuming window.location = "http://example.com/?a=1&b=2"
+// Assume window.location = "http://example.com/?a=1&b=2"
 window.location.$getParams()   // Returns { "a": "1", "b": "2" }
 window.location.$getParam("a") // Returns "1"
 ```
@@ -142,7 +142,7 @@ ActiveSupport has a bunch of slick [string inflections][inf]. Sprinkles just has
 
 ## XHR (AJAX)
 
-Creating an `XMLHttpRequest` object from scratch is tedious, so `get()` and `getJSON()` have been added as methods on `window` as convenience.
+Creating an `XMLHttpRequest` object from scratch is tedious, so **`get()`** and **`getJSON()`** have been added to `window` as convenience.
 
 ``` js
 window.$get("http://example.com/plain-text",
@@ -155,6 +155,8 @@ window.$getJSON("http://example.com/json",
   function(object) { console.log(object) }  // error
 })
 ```
+
+Since all variables and methods delegate to `window` you can simply call `$get()`.
 
 ## Development
 
