@@ -33,14 +33,14 @@ This project is under active development so things will change dramatically as i
 
 ## Array Extensions
 
-Your browser is all grown up! Let it `loop()`, `map()`, and `reduce()` your arrays.
+Your browser is all grown up! Let it `forEach()`, `map()`, and `reduce()` your arrays.
 
 ``` js
 var pies = ["apple", "pecan", "cherry"];
 
 pies.forEach(function(pie, i) {
   alert("Do you like " + pie + " pie ?");
-});
+}); // Alerts "Do you like..." three times
 
 pies.map(function(pie, i) {
   return pie + " pie";
@@ -55,6 +55,16 @@ Sprinkles adds `$flatten()` to `Array.prototype`.
 
 ``` js
 [[1], [2], [3]].$flatten(); // Returns [1, 2, 3]
+```
+
+Sprinkles also adds `$groupBy()`.
+
+``` js
+["cat", "dog", "turtle"].$groupBy(function(animal) {
+  return animal.length;
+})
+
+// Returns { 3: ["cat", "dog"], 6: ["turtle"] }
 ```
 
 ## Cookies
