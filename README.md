@@ -12,6 +12,7 @@ In Sprinkles, you'll find:
 * [Array extensions](#array-extensions)
 * [Cookies](#cookies)
 * [Date extensions](#date-extensions)
+* [Object extensions](#object-extensions)
 * [Query string params](#query-string-params)
 * [String inflections](#string-inflections)
 * [XHR helpers](#xhr-ajax)
@@ -111,6 +112,24 @@ results.appendChild(result);                      // Add an element as a child
 ```
 
 If you do a lot of this maybe you should write a function like `createElement(name, content, parent)` or use jQuery (gasp!).
+
+## Object Extensions
+
+In Ruby, there's little distinction between looping over an array or a hash — you call the same method (i.e. `each()`). The difference is the signature of the callback function. For an array, the callback receives one primary argument (each item in the aray); for a hash, the callback recieves two arguments (each key value pair in the hash). Sprinkles adds **`$forEach()`** to `Object.prototype` so that you can similarly loop through the keys and values of any object.
+
+``` js
+var object = { a: 1, b: 2, c: 3 },
+    keys   = [],
+    values = [];
+
+object.$forEach(function(key, value) {
+  keys.push(key);
+  values.push(value);
+})
+
+// keys   = ["a", "b", "c"]
+// values = [1, 2, 3]
+```
 
 ## Query String Params
 
