@@ -35,7 +35,7 @@ test("$monthName", function() {
   equal((new Date(1986, 11, 1)).$monthName(), "December");
 });
 
-test("dayName", function() {
+test("$dayName", function() {
   equal((new Date(1986, 0, 20)).$dayName(), "Monday");
   equal((new Date(1986, 0, 21)).$dayName(), "Tuesday");
   equal((new Date(1986, 0, 22)).$dayName(), "Wednesday");
@@ -45,12 +45,12 @@ test("dayName", function() {
   equal((new Date(1986, 0, 26)).$dayName(), "Sunday");
 });
 
-test("tomorrow", function() {
+test("$tomorrow", function() {
   var a = new Date(1986, 0, 24, 20, 25), b = new Date(1986, 0, 25, 20, 25);
   deepEqual(a.$tomorrow(), b);
 });
 
-test("yesterday", function() {
+test("$yesterday", function() {
   var a = new Date(1986, 0, 24, 20, 25), b = new Date(1986, 0, 23, 20, 25);
   deepEqual(a.$yesterday(), b);
 });
