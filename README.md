@@ -12,6 +12,7 @@ In Sprinkles, you'll find:
 * [Array extensions](#array-extensions)
 * [Cookies](#cookies)
 * [Date extensions](#date-extensions)
+* [Node extensions](#node-extensions)
 * [Object extensions](#object-extensions)
 * [Query string params](#query-string-params)
 * [String inflections](#string-inflections)
@@ -112,6 +113,15 @@ results.appendChild(result);                      // Add an element as a child
 ```
 
 If you do a lot of this maybe you should write a function like `createElement(name, content, parent)` or use jQuery (gasp!).
+
+## Node Extensions
+
+If you want to clear an element of all its children, you can do `el.innerHTML = ""` (gross) or loop through all the child nodes and remove them one at a time (tedious). Sprinkles adds **`$removeChildren()`** to `Node.prototype` to make it easy.
+
+``` js
+var ul = document.querySelector("ul");
+ul.$removeChildren(); // Removes all the list items (clears the list)
+```
 
 ## Object Extensions
 
