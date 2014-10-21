@@ -27,7 +27,7 @@ test("$forEach", function() {
 });
 
 test("$try", function() {
-  var cbTest = function() {
+  var callBackTest = function() {
     return "test";
   }
 
@@ -47,18 +47,11 @@ test("$try", function() {
     }
   };
 
-  // It should call and return a object function
-  deepEqual(object.$try('foo'), "Foo");
-  // It should return an child object
-  deepEqual(typeof(object.$try('bar')), "object");
-  // It should call and return a object string
-  deepEqual(object.$try('bar').$try('taz'), "Bar Taz");
-  // It should call and if method doesn't exist return null
-  deepEqual(object.$try('bar').$try('test'), null);
-  // It should pass args as expected
-  deepEqual(object.$try('qux', ["foo"]), "foo");
-  // It should call a function
-  deepEqual(object.$try('qux', ["foo", cbTest]), "test");
-  // It should return a callback function
-  deepEqual(object.$try('qux', ["foo", function(){return "test2"}]), "test2");
+  deepEqual(object.$try("foo"), "Foo");
+  deepEqual(typeof(object.$try("bar")), "object");
+  deepEqual(object.$try("bar").$try("taz"), "Bar Taz");
+  deepEqual(object.$try("bar").$try("test"), null);
+  deepEqual(object.$try("qux", "foo"), "foo");
+  deepEqual(object.$try("qux", "foo", callBackTest), "test");
+  deepEqual(object.$try("qux", "foo", function(){ return "test2" }), "test2");
 });

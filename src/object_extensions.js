@@ -4,8 +4,9 @@ Object.prototype.$forEach = function(callback) {
   }
 };
 
-Object.prototype.$try = function(method, args) {
-  method = this[method];
+Object.prototype.$try = function() {
+  var args = Array.prototype.slice.call(arguments);
+  var method = this[args.shift()];
   if (method === undefined) {
     return null;
   } else if (typeof method === 'function') {
