@@ -3,3 +3,15 @@ Object.prototype.$forEach = function(callback) {
     if (this.hasOwnProperty(key)) callback(key, this[key]);
   }
 };
+
+Object.prototype.$try = function() {
+  var args = Array.prototype.slice.call(arguments);
+  var method = this[args.shift()];
+  if (method === undefined) {
+    return null;
+  } else if (typeof method === 'function') {
+    return method.apply(null, args);
+  } else {
+    return method;
+  }
+};
