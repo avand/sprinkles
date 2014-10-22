@@ -141,7 +141,7 @@ object.$forEach(function(key, value) {
 // values = [1, 2, 3]
 ```
 
-ActiveSupport extends all objects with a try() method - Sprinkles does too. $try() allows you to attempt to call a method or access a property on an object that might otherwise be undefined.
+ActiveSupport extends all objects with a `try()` method - Sprinkles does too. `$try()` allows you to attempt to call a method or access a property on an object that might otherwise be undefined.
 
 ``` js
 var car = { make: "Porsche", model: "911", start: function(key) { } };
