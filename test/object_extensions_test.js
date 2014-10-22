@@ -27,7 +27,7 @@ test("$forEach", function() {
 });
 
 test("$try", function() {
-  var callBackTest = function() {
+  var callback = function() {
     return "test";
   }
 
@@ -52,6 +52,6 @@ test("$try", function() {
   deepEqual(object.$try("bar").$try("taz"), "Bar Taz");
   deepEqual(object.$try("bar").$try("test"), null);
   deepEqual(object.$try("qux", "foo"), "foo");
-  deepEqual(object.$try("qux", "foo", callBackTest), "test");
-  deepEqual(object.$try("qux", "foo", function(){ return "test2" }), "test2");
+  deepEqual(object.$try("qux", "foo", callback), "test");
+  deepEqual(object.$try("qux", "foo", function() { return "test2" }), "test2");
 });
