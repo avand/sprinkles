@@ -20,3 +20,9 @@ test("$groupBy", function() {
     return animal.length;
   }), { 3: ["cat", "dog"], 6: ["turtle"] });
 });
+
+test("$includes", function() {
+  deepEqual([1, 2, 'a', 'b', true].$includes('b'), true);
+  deepEqual([1, 2, 'a', 'b', true].$includes('d'), false);
+  deepEqual([1, 2, 'a', 'b', true].$includes(true), true);
+});
