@@ -8,28 +8,28 @@ describe("document.$cookies", function() {
 
   beforeEach(clearCookies);
 
-  describe("setItem()", function() {
+  describe("set()", function() {
     it("set the value of a cookie by name", function() {
-      document.$cookies.setItem("foo", "bar");
+      document.$cookies.set("foo", "bar");
       assert.equal(document.cookie, "foo=bar");
     });
   });
 
-  describe("getItem()", function() {
+  describe("get()", function() {
     it("returns null for a cookie that is not set", function() {
-      assert.equal(document.$cookies.getItem("foo"), null);
+      assert.equal(document.$cookies.get("foo"), null);
     });
 
     it("returns the value of a cookie that is set", function() {
       document.cookie = "foo=bar; path=/";
-      assert.equal(document.$cookies.getItem("foo"), "bar");
+      assert.equal(document.$cookies.get("foo"), "bar");
     });
   });
 
-  describe("removeItem()", function() {
+  describe("remove()", function() {
     it("removes a cookie by name", function() {
       document.cookie = "foo=bar; path=/";
-      document.$cookies.removeItem("foo");
+      document.$cookies.remove("foo");
       assert.equal(document.cookie, "");
     })
   });

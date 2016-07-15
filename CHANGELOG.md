@@ -7,6 +7,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - This Change Log!
 ### Changed
+- Cookie-related methods `setItem()`, `getItem()`, and `removeItem()` have been
+  renamed to simply `set()`, `get()`, and `remove()`.
 ### Removed
 
 ## [1.4.0] - 2014-07-09

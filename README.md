@@ -79,13 +79,13 @@ Sprinkles adds **`$includes()`**.
 
 ## Cookies
 
-Working with cookies isn't very fun if all you have is `document.cookie`. Sprinkles adds **`document.$cookies`** that makes managing cookies a little easier. The API is designed to closely match that of `localStorage`.
+Working with cookies isn't very fun if all you have is `document.cookie`. Sprinkles adds **`document.$cookies`** that makes managing cookies a little easier.
 
 ``` js
-document.$cookies.setItem("foo", "bar"); // Write a cookie, "foo", with value "bar"
-document.$cookies.getItem("foo");        // Returns "bar"
-document.$cookies.removeItem("foo");     // Remove cookie, "foo"
-document.$cookies.clear();               // Remove all cookies
+document.$cookies.set("flavor", "chocolate chip"); // Write a cookie, "flavor", with value "chocolate chip"
+document.$cookies.get("flavor");                   // Returns "chocolate chip"
+document.$cookies.remove("flavor");                // Remove cookie, "flavor"
+document.$cookies.clear();                         // Remove all cookies
 ```
 
 Sprinkles always assumes the path on all your cookies is `/` and does not support cookies that specify `domain`, `max-age`, `expires`, or `secure` — maybe one day.
