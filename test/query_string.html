@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Sprinkles Test Suite</title>
+
+  <link href="vendor/mocha-2.5.3.css" rel="stylesheet">
+  <link href="css/nav.css" rel="stylesheet">
+
+  <script src="vendor/mocha-2.5.3.js"></script>
+  <script src="vendor/chai-3.5.0.js"></script>
+  <script src="vendor/sinon-1.17.3.js"></script>
+
+  <script>
+    mocha.setup("bdd");
+    assert = chai.assert;
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="index.html">All Tests</a> &middot;
+    Query String Tests</a>
+  </nav>
+
+  <div id="mocha"></div>
+
+  <script src="../src/location_extensions.js"></script>
+
+  <script src="location_instance_extensions_test.js"></script>
+
+  <script>
+    mocha.checkLeaks();
+    mocha.run();
+  </script>
+</body>
+</html>
