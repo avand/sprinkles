@@ -1,42 +1,45 @@
-module("cookies", {
-  clearCookies: function() {
+describe("document.$cookies", function() {
+  function clearCookies() {
     document.cookie.split(";").forEach(function(cookie) {
       var key = cookie.replace(/=.*/, "");
       document.cookie = key + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
     });
-  },
+  };
 
-  setup: function() {
-    this.clearCookies();
-  }
-});
+  beforeEach(clearCookies);
 
-test("setItem", function() {
-  document.$cookies.setItem("foo", "bar");
-  equal(document.cookie, "foo=bar");
-});
+  describe("setItem()", function() {
+    it("set the value of a cookie by name", function() {
+      document.$cookies.setItem("foo", "bar");
+      assert.equal(document.cookie, "foo=bar");
+    });
+  });
 
-test("getItem", function() {
-  equal(document.$cookies.getItem("foo"), null);
-  document.cookie = "foo=bar; path=/";
-  equal(document.$cookies.getItem("foo"), "bar");
-});
+  describe("getItem()", function() {
+    it("returns null for a cookie that is not set", function() {
+      assert.equal(document.$cookies.getItem("foo"), null);
+    });
 
-test("getItem", function() {
-  document.$cookies.removeItem("foo");
-  equal(document.cookie, "");
-});
+    it("returns the value of a cookie that is set", function() {
+      document.cookie = "foo=bar; path=/";
+      assert.equal(document.$cookies.getItem("foo"), "bar");
+    });
+  });
 
-test("clear", function() {
-  document.cookie = "foo=bar; expires=Wed, 24 Jan 2024 00:00:01 GMT; path=/";
-  document.cookie = "bar=baz; expires=Wed, 24 Jan 2024 00:00:01 GMT; path=/";
-  document.$cookies.clear();
-  equal(document.cookie, "");
-});
+  describe("removeItem()", function() {
+    it("removes a cookie by name", function() {
+      document.cookie = "foo=bar; path=/";
+      document.$cookies.removeItem("foo");
+      assert.equal(document.cookie, "");
+    })
+  });
 
-test("setItem, getItem, and removeItem", function() {
-  document.$cookies.setItem("foo", "bar");
-  equal(document.$cookies.getItem("foo"), "bar");
-  document.$cookies.removeItem("foo");
-  equal(document.$cookies.getItem("foo"), null);
-});
+  describe("clear()", function() {
+    it("removes all cookies", function() {
+      document.cookie = "foo=bar; expires=Wed, 24 Jan 2024 00:00:01 GMT; path=/";
+      document.cookie = "bar=baz; expires=Wed, 24 Jan 2024 00:00:01 GMT; path=/";
+      document.$cookies.clear();
+      assert.equal(document.cookie, "");
+    })
+  });
+})
