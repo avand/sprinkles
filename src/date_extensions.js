@@ -1,49 +1,70 @@
-Date.prototype.$beginningOfDay = function() {
-  return new Date(this.getFullYear(), this.getMonth(), this.getDate());
-};
+Object.defineProperties(Date.prototype, {
+  $beginningOfDay: {
+    get: function() {
+      return new Date(this.getFullYear(), this.getMonth(), this.getDate());
+    }
+  },
 
-Date.prototype.$endOfDay = function() {
-  return new Date(this.getFullYear(), this.getMonth(), this.getDate(), 23, 59, 59, 999);
-};
+  $endOfDay: {
+    get: function() {
+      return new Date(this.getFullYear(), this.getMonth(), this.getDate(),
+        23, 59, 59, 999);
+    }
+  },
 
-Date.prototype.$beginningOfMonth = function() {
-  return new Date(this.getFullYear(), this.getMonth());
-};
+  $beginningOfMonth: {
+    get: function() {
+      return new Date(this.getFullYear(), this.getMonth());
+    }
+  },
 
-Date.prototype.$endOfMonth = function() {
-  return new Date(this.getFullYear(), this.getMonth() + 1, 0, 23, 59, 59, 999);
-};
+  $endOfMonth: {
+    get: function() {
+      return new Date(this.getFullYear(), this.getMonth() + 1, 0,
+        23, 59, 59, 999);
+    }
+  },
 
-Date.prototype.$monthName = function() {
-  var names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  return names[this.getMonth()];
-};
+  $monthName: {
+    get: function() {
+      return ["January", "February", "March", "April",
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"][this.getMonth()];
+    }
+  },
 
-Date.prototype.$dayName = function(options) {
-  var names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  return names[this.getDay()];
-};
+  $dayName: {
+    get: function() {
+      return ["Sunday", "Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "Saturday"][this.getDay()];
+    }
+  },
 
-Date.prototype.$tomorrow = function() {
-  return new Date(
-    this.getFullYear(),
-    this.getMonth(),
-    this.getDate() + 1,
-    this.getHours(),
-    this.getMinutes(),
-    this.getSeconds(),
-    this.getMilliseconds()
-  );
-};
+  $tomorrow: {
+    get: function() {
+      return new Date(
+        this.getFullYear(),
+        this.getMonth(),
+        this.getDate() + 1,
+        this.getHours(),
+        this.getMinutes(),
+        this.getSeconds(),
+        this.getMilliseconds()
+      );
+    }
+  },
 
-Date.prototype.$yesterday = function() {
-  return new Date(
-    this.getFullYear(),
-    this.getMonth(),
-    this.getDate() - 1,
-    this.getHours(),
-    this.getMinutes(),
-    this.getSeconds(),
-    this.getMilliseconds()
-  );
-};
+  $yesterday: {
+    get: function() {
+      return new Date(
+        this.getFullYear(),
+        this.getMonth(),
+        this.getDate() - 1,
+        this.getHours(),
+        this.getMinutes(),
+        this.getSeconds(),
+        this.getMilliseconds()
+      );
+    }
+  }
+});

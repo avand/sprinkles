@@ -96,14 +96,14 @@ Manipulating a dates in JavaScript sucks. Sprinkles makes it suck less.
 
 ``` js
 var d = new Date(1986, 0, 24, 20, 25); // Jan 24th, 1986 at 20:25
-d.$beginningOfDay();                   // Jan 24th, 1986 at 00:00
-d.$endOfDay();                         // Jan 24th, 1986 at 23:59
-d.$beginningOfMonth();                 // Jan  1st, 1986 at 00:00
-d.$endOfMonth();                       // Jan 31st, 1986 at 23:59
-d.$tomorrow();                         // Jan 25th, 1986 at 20:25
-d.$yesterday();                        // Jan 23rd, 1986 at 20:25
-d.$monthName();                        // "January"
-d.$dayName();                          // "Friday"
+d.$beginningOfDay;                     // Jan 24th, 1986 at 00:00
+d.$endOfDay;                           // Jan 24th, 1986 at 23:59
+d.$beginningOfMonth;                   // Jan  1st, 1986 at 00:00
+d.$endOfMonth;                         // Jan 31st, 1986 at 23:59
+d.$tomorrow;                           // Jan 25th, 1986 at 20:25
+d.$yesterday;                          // Jan 23rd, 1986 at 20:25
+d.$monthName;                          // "January"
+d.$dayName;                            // "Friday"
 ```
 
 ## DOM Manipulation

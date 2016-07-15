@@ -10,6 +10,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Cookie-related methods `setItem()`, `getItem()`, and `removeItem()` have been
   renamed to simply `set()`, `get()`, and `remove()`.
+- All date extensions are now implemented as properties with getter functions.
+  No more parenthesis needed.
 
 ## [1.4.0] - 2014-07-09
 ### Added
