@@ -1,56 +1,78 @@
-module("date extensions");
+describe("Date.prototype", function() {
+  describe("$beginningOfDay()", function() {
+    it("returns the beginning of the day", function() {
+      var a = new Date(1986, 0, 24, 20, 25);
+      var b = new Date(1986, 0, 24);
+      assert.deepEqual(a.$beginningOfDay(), b);
+    });
+  });
 
-test("$beginningOfDay", function() {
-  var a = new Date(1986, 0, 24, 20, 25), b = new Date(1986, 0, 24);
-  deepEqual(a.$beginningOfDay(), b);
-});
+  describe("$endOfDay()", function() {
+    it("returns the end of the day", function() {
+      var a = new Date(1986, 0, 24, 20, 25);
+      var b = new Date(1986, 0, 24, 23, 59, 59, 999);
+      assert.deepEqual(a.$endOfDay(), b);
+    });
+  });
 
-test("$endOfDay", function() {
-  var a = new Date(1986, 0, 24, 20, 25), b = new Date(1986, 0, 24, 23, 59, 59, 999);
-  deepEqual(a.$endOfDay(), b);
-});
+  describe("$beginningOfMonth()", function() {
+    it("returns the beginning of the month", function() {
+      var a = new Date(1986, 0, 24, 20, 25);
+      var b = new Date(1986, 0, 1);
+      assert.deepEqual(a.$beginningOfMonth(), b);
+    });
+  });
 
-test("$beginningOfMonth", function() {
-  var a = new Date(1986, 0, 24, 20, 25), b = new Date(1986, 0, 1);
-  deepEqual(a.$beginningOfMonth(), b);
-});
+  describe("$endOfMonth()", function() {
+    it("returns the end of the month", function() {
+      var a = new Date(1986, 0, 24, 20, 25);
+      var b = new Date(1986, 0, 31, 23, 59, 59, 999);
+      assert.deepEqual(a.$endOfMonth(), b);
+    });
+  });
 
-test("$endOfMonth", function() {
-  var a = new Date(1986, 0, 24, 20, 25), b = new Date(1986, 0, 31, 23, 59, 59, 999);
-  deepEqual(a.$endOfMonth(), b);
-});
+  describe("$monthName()", function() {
+    it("returns the English name of the month", function() {
+      assert.equal((new Date(1986, 0, 1)).$monthName(), "January");
+      assert.equal((new Date(1986, 1, 1)).$monthName(), "February");
+      assert.equal((new Date(1986, 2, 1)).$monthName(), "March");
+      assert.equal((new Date(1986, 3, 1)).$monthName(), "April");
+      assert.equal((new Date(1986, 4, 1)).$monthName(), "May");
+      assert.equal((new Date(1986, 5, 1)).$monthName(), "June");
+      assert.equal((new Date(1986, 6, 1)).$monthName(), "July");
+      assert.equal((new Date(1986, 7, 1)).$monthName(), "August");
+      assert.equal((new Date(1986, 8, 1)).$monthName(), "September");
+      assert.equal((new Date(1986, 9, 1)).$monthName(), "October");
+      assert.equal((new Date(1986, 10, 1)).$monthName(), "November");
+      assert.equal((new Date(1986, 11, 1)).$monthName(), "December");
+    });
+  });
 
-test("$monthName", function() {
-  equal((new Date(1986, 0,  1)).$monthName(), "January");
-  equal((new Date(1986, 1,  1)).$monthName(), "February");
-  equal((new Date(1986, 2,  1)).$monthName(), "March");
-  equal((new Date(1986, 3,  1)).$monthName(), "April");
-  equal((new Date(1986, 4,  1)).$monthName(), "May");
-  equal((new Date(1986, 5,  1)).$monthName(), "June");
-  equal((new Date(1986, 6,  1)).$monthName(), "July");
-  equal((new Date(1986, 7,  1)).$monthName(), "August");
-  equal((new Date(1986, 8,  1)).$monthName(), "September");
-  equal((new Date(1986, 9,  1)).$monthName(), "October");
-  equal((new Date(1986, 10, 1)).$monthName(), "November");
-  equal((new Date(1986, 11, 1)).$monthName(), "December");
-});
+  describe("$dayName()", function() {
+    it("returns the English name of the day", function() {
+      assert.equal((new Date(1986, 0, 20)).$dayName(), "Monday");
+      assert.equal((new Date(1986, 0, 21)).$dayName(), "Tuesday");
+      assert.equal((new Date(1986, 0, 22)).$dayName(), "Wednesday");
+      assert.equal((new Date(1986, 0, 23)).$dayName(), "Thursday");
+      assert.equal((new Date(1986, 0, 24)).$dayName(), "Friday");
+      assert.equal((new Date(1986, 0, 25)).$dayName(), "Saturday");
+      assert.equal((new Date(1986, 0, 26)).$dayName(), "Sunday");
+    });
+  });
 
-test("$dayName", function() {
-  equal((new Date(1986, 0, 20)).$dayName(), "Monday");
-  equal((new Date(1986, 0, 21)).$dayName(), "Tuesday");
-  equal((new Date(1986, 0, 22)).$dayName(), "Wednesday");
-  equal((new Date(1986, 0, 23)).$dayName(), "Thursday");
-  equal((new Date(1986, 0, 24)).$dayName(), "Friday");
-  equal((new Date(1986, 0, 25)).$dayName(), "Saturday");
-  equal((new Date(1986, 0, 26)).$dayName(), "Sunday");
-});
+  describe("$tomorrow()", function() {
+    it("returns the date plus one day", function() {
+      var a = new Date(1986, 0, 24, 20, 25);
+      var b = new Date(1986, 0, 25, 20, 25);
+      assert.deepEqual(a.$tomorrow(), b);
+    });
+  });
 
-test("$tomorrow", function() {
-  var a = new Date(1986, 0, 24, 20, 25), b = new Date(1986, 0, 25, 20, 25);
-  deepEqual(a.$tomorrow(), b);
-});
-
-test("$yesterday", function() {
-  var a = new Date(1986, 0, 24, 20, 25), b = new Date(1986, 0, 23, 20, 25);
-  deepEqual(a.$yesterday(), b);
-});
+  describe("$yesterday()", function() {
+    it("returns the date minus one day", function() {
+      var a = new Date(1986, 0, 24, 20, 25);
+      var b = new Date(1986, 0, 23, 20, 25);
+      assert.deepEqual(a.$yesterday(), b);
+    });
+  });
+})
