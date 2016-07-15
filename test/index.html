@@ -1,33 +1,23 @@
-<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+
   <title>Sprinkles Test Suite</title>
-  <link rel="stylesheet" href="vendor/qunit-1.13.0.css" type="text/css" media="screen">
+
+  <link href="vendor/mocha-2.5.3.css" rel="stylesheet">
+
+  <script src="vendor/mocha-2.5.3.js"></script>
+
+  <script>
+    mocha.setup("bdd");
+  </script>
 </head>
 <body>
-  <div id="qunit"></div>
-  <div id="qunit-fixture"></div>
+  <div id="mocha"></div>
 
-  <script src="vendor/qunit-1.13.0.js"></script>
-  <script src="vendor/sinon-1.7.3.js"></script>
-  <script src="vendor/sinon-qunit-1.0.0.js"></script>
-
-  <script src="../src/array_extensions.js"></script>
-  <script src="../src/cookies.js"></script>
-  <script src="../src/date_extensions.js"></script>
-  <script src="../src/node_extensions.js"></script>
-  <script src="../src/object_extensions.js"></script>
-  <script src="../src/query_string_params.js"></script>
-  <script src="../src/string_extensions.js"></script>
-  <script src="../src/xhr.js"></script>
-
-  <script src="array_extensions_test.js"></script>
-  <script src="cookies_test.js"></script>
-  <script src="date_extensions_test.js"></script>
-  <script src="node_extensions_test.js"></script>
-  <script src="object_extensions_test.js"></script>
-  <script src="query_string_params_test.js"></script>
-  <script src="string_extensions_test.js"></script>
-  <script src="xhr_test.js"></script>
+  <script>
+    mocha.checkLeaks();
+    mocha.run();
+  </script>
 </body>
 </html>
