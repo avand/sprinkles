@@ -8,7 +8,7 @@ Object.prototype.$try = function() {
   var args = Array.prototype.slice.call(arguments);
   var method = this[args.shift()];
   if (method === undefined) {
-    return null;
+    return;
   } else if (typeof method === 'function') {
     return method.apply(null, args);
   } else {

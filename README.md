@@ -154,7 +154,7 @@ ActiveSupport extends all objects with a `try()` method - Sprinkles does too. `$
 ``` js
 var car = { make: "Porsche", model: "911", start: function(key) { } };
 car.$try("make")         // Returns "Porsche"
-car.$try("color")        // Returns null
+car.$try("color")        // Returns undefined
 car.$try("start", "...") // Calls start() and passes in "..." as the key
 ```
 

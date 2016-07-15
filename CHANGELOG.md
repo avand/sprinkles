@@ -12,6 +12,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   renamed to simply `set()`, `get()`, and `remove()`.
 - All date extensions are now implemented as properties with getter functions.
   No more parenthesis needed.
+- `Object.prototype.$try()` will return `undefined` now instead of `null` if it
+  can't find the property.
 
 ## [1.4.0] - 2014-07-09
 ### Added
