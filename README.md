@@ -1,9 +1,9 @@
-Sprinkles
-=========
+Sprinkles 🍩
+===========
 
-Sprinkles is [ActiveSupport][as] for your browser.
+If you've used [Ruby on Rails][ror] you're probably familiar with [ActiveSupport][as]. Sprinkles is like ActiveSupport for your browser. It's chock-full of helpers that you'll use every day. Things like flattening or grouping an array, reading and writing cookies, rewinding a date to "yesterday," grabbing parameters from the query string, and making HTTP requests.
 
-The goal of this project is to isolate a small collection of helpers and extensions to make our lives as front-end engineers a little easier — just like ActiveSupport has done for [Ruby on Rails][ror] engineers.
+The goal of this project is to isolate a small collection of helpers and extensions to make our lives as front-end engineers a little easier — just like ActiveSupport has done for  engineers.
 
 Though syntatically optimal, monkey patching is general considered a [bad idea][red] so Sprinkles prefixes all methods and globals with a "$" to differentiate them from any native methods your client may have.
 
