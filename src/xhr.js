@@ -1,4 +1,4 @@
-window.$get = function(url, success, error) {
+function $get(url, success, error) {
   var xhr = new XMLHttpRequest();
 
   xhr.onreadystatechange = function() {
@@ -15,9 +15,9 @@ window.$get = function(url, success, error) {
   xhr.send();
 };
 
-window.$getJSON = function(url, success, error) {
-  window.$get(url,
+function $getJSON(url, success, error) {
+  $get(url,
     function(json) { success(JSON.parse(json)); },
-    function(json) {   error(JSON.parse(json)); }
+    function(json) { error(JSON.parse(json)); }
   );
 };
