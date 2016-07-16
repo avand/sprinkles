@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - This Change Log!
+- `Sprinkles.QueryString.parse()` to parse query string params from any URL.
+- `location.$params` returns the params in `window.location.search`.
 
 ### Changed
 - Cookie-related methods `setItem()`, `getItem()`, and `removeItem()` have been
@@ -14,6 +16,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   No more parenthesis needed.
 - `Object.prototype.$try()` will return `undefined` now instead of `null` if it
   can't find the property.
+
+### Removed
+- `Location.$getParams()`
+- `Location.$getParam()`
+- `Location.prototype.$getParams()`
+- `Location.prototype.$getParam()`
 
 ## [1.4.0] - 2014-07-09
 ### Added

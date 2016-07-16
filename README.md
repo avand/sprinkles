@@ -160,19 +160,18 @@ car.$try("start", "...") // Calls start() and passes in "..." as the key
 
 ## Query String Params
 
-Read the query string params off any URL with the class methods Sprinkles adds to `Location`:
+Use a global class method to parse the query string params from any URL:
 
 ``` js
-Location.$getParams("http://example.com/?a=1&b=2")     // Returns { "a": "1", "b": "2" }
-Location.$getParam("http://example.com/?a=1&b=2", "a") // Returns "1"
+Sprinkles.QueryString.parse("http://example.com/?a=1&b=2") // Returns { "a": "1", "b": "2" }
 ```
 
-Sprinkles also adds instance methods `Location.prototype` to read query string params from the current window's location:
+Sprinkles also adds a property to `Location.prototype` to parse the query string params in `window.location.search`:
 
 ``` js
 // Assume window.location = "http://example.com/?a=1&b=2"
-window.location.$getParams()   // Returns { "a": "1", "b": "2" }
-window.location.$getParam("a") // Returns "1"
+window.location.$params      // Returns { "a": "1", "b": "2" }
+window.location.$params["a"] // Returns "1"
 ```
 
 ## String Inflections
