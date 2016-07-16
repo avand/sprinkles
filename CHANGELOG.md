@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - `Number.prototype.$ordinalize()` (moved from `String.prototype`).
 
 ### Changed
+- Moved off QUnit in favor of Mocha.
 - Cookie-related methods `setItem()`, `getItem()`, and `removeItem()` have been
   renamed to simply `set()`, `get()`, and `remove()`.
 - All date extensions are now implemented as properties with getter functions.
@@ -19,6 +20,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   can't find the property.
 
 ### Removed
+- Command line tests—use the browser for now.
 - `Location.$getParams()`
 - `Location.$getParam()`
 - `Location.prototype.$getParams()`
