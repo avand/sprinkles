@@ -216,15 +216,15 @@ This is the Ruby equivalent of running `bundle install`. Now you can run the fol
 
 * `grunt concat`
 * `grunt jshint`
-* `grunt qunit`
 * `grunt uglify`
 
-Unfortunately, the tests [don't currently pass][i10] from the command line. This is due to the fact that PhantomJS, which drives the headless tests, is not a browser. This means that things like `document.cookie` and `window.location` don't behave like you'd expect. It seems sensible that running tests in-browser takes priority over running them from the command line so for now to run them boot up Sprinkles in web server (e.g., `python -m SimpleHTTPServer 8080`) and hit the test file directly (e.g. http://localhost:8080/test/index.html). If you're feeling especially debuggy, run `grunt test` from the console.
+Unfortunately, you cannot run tests from the command line. This is due to the fact that things like PhantomJS, which usually drive headless tests, are not real browsers. This means that things like `document.cookie` and `window.location` don't behave like you'd expect. It seems sensible that running tests in-browser takes priority over running them from the command line so for now to run them boot up Sprinkles in web server (e.g., `python -m SimpleHTTPServer 8080`) and hit the test file directly (e.g. http://localhost:8080/test/index.html).
+
+Please note there is a separate test file dedicated to testing query strings because if you set `window.location.search` during a test, the browser will reload the page. In a separate file, it's possible to test query string parameters in isolation.
 
 When you're done with a feature, you should [semantically](sem) increment the version number in `package.json` and run `grunt build` to update the distribution files.
 
 [grn]: http://gruntjs.com
 [npm]: https://www.npmjs.org
 [hmb]: http://brew.sh
-[i10]: https://github.com/canaryup/sprinkles/issues/10
 [sem]: http://semver.org
