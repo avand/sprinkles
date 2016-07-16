@@ -13,9 +13,9 @@ In Sprinkles, you'll find:
 * [Cookies](#cookies)
 * [Date extensions](#date-extensions)
 * [Node extensions](#node-extensions)
+* [Number extensions](#number-extensions)
 * [Object extensions](#object-extensions)
 * [Query string params](#query-string-params)
-* [String inflections](#string-inflections)
 * [XHR helpers](#xhr-ajax)
 
 What you won't find in this project is:
@@ -131,6 +131,18 @@ var ul = document.querySelector("ul");
 ul.$removeChildren(); // Removes all the list items (clears the list)
 ```
 
+## Number Extensions
+
+ActiveSupport has a bunch of slick [string inflections][inf]. Sprinkles just has this one for now:
+
+``` js
+var n;
+n = 1; n.$ordinalize()  // "1st"
+n = 22; n.$ordinalize() // "22nd"
+```
+
+[inf]: http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html
+
 ## Object Extensions
 
 In Ruby, there's little distinction between looping over an array or a hash — you call the same method (i.e. `each()`). The difference is the signature of the callback function. For an array, the callback receives one primary argument (each item in the aray); for a hash, the callback recieves two arguments (each key value pair in the hash). Sprinkles adds **`$forEach()`** to `Object.prototype` so that you can similarly loop through the keys and values of any object.
@@ -173,17 +185,6 @@ Sprinkles also adds a property to `Location.prototype` to parse the query string
 window.location.$params      // Returns { "a": "1", "b": "2" }
 window.location.$params["a"] // Returns "1"
 ```
-
-## String Inflections
-
-ActiveSupport has a bunch of slick [string inflections][inf]. Sprinkles just has the one for now.
-
-``` js
-"1".$ordinalize()  // "1st"
-"22".$ordinalize() // "22nd"
-```
-
-[inf]: http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html
 
 ## XHR (AJAX)
 
