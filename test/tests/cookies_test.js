@@ -31,7 +31,12 @@ describe("document.$cookies", function() {
       document.cookie = "foo=bar; path=/";
       document.$cookies.remove("foo");
       assert.equal(document.cookie, "");
-    })
+    });
+
+    it("returns the value of the cookie", function() {
+      document.cookie = "foo=bar; path=/";
+      assert.equal(document.$cookies.remove("foo"), "bar");
+    });
   });
 
   describe("clear()", function() {

@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   No more parenthesis needed.
 - `Object.prototype.$try()` will return `undefined` now instead of `null` if it
   can't find the property.
+- `document.$cookies.remove()` returns the value of the cookie.
 
 ### Removed
 - Command line tests—use the browser for now.
