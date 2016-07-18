@@ -16,4 +16,4 @@ Sprinkles.QueryString = {
       return params;
     }, {});
   }
-}
+};

@@ -13,11 +13,11 @@ function $get(url, success, error) {
 
   xhr.open("GET", url);
   xhr.send();
-};
+}
 
 function $getJSON(url, success, error) {
   $get(url,
     function(json) { success(JSON.parse(json)); },
     function(json) { error(JSON.parse(json)); }
   );
-};
+}
