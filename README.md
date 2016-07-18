@@ -3,20 +3,20 @@ Sprinkles 🍩
 
 If you've used [Ruby on Rails][ror] you're probably familiar with [ActiveSupport][as]. Sprinkles is like ActiveSupport for your browser. It's chock-full of helpers that you'll use every day. Things like flattening or grouping an array, reading and writing cookies, rewinding a date to "yesterday," grabbing parameters from the query string, and making HTTP requests.
 
-The goal of this project is to isolate a small collection of helpers and extensions to make our lives as front-end engineers a little easier — just like ActiveSupport has done for  engineers.
+The goal of this project is to isolate a small collection of helpers and extensions to make our lives as front-end engineers a little easier—just like ActiveSupport has done for Ruby developers.
 
-Though syntatically optimal, monkey patching is general considered a [bad idea][red] so Sprinkles prefixes all methods and globals with a "$" to differentiate them from any native methods your client may have.
+Although monkey-patching is generally considered a [bad idea][red], it is syntactically optimal so Sprinkles prefixes all methods and globals with a "$" to differentiate them from any native methods your client may have.
 
-In Sprinkles, you'll find:
+In Sprinkles, you'll find lots of useful methods that help you work with:
 
-* [Array extensions](#array-extensions)
+* [Arrays](#arrays)
 * [Cookies](#cookies)
-* [Date extensions](#date-extensions)
-* [Node extensions](#node-extensions)
-* [Number extensions](#number-extensions)
-* [Object extensions](#object-extensions)
-* [Query string params](#query-string-params)
-* [XHR helpers](#xhr-ajax)
+* [Dates](#dates)
+* [Nodes](#nodes)
+* [Numbers](#numbers)
+* [Objects](#objects)
+* [Query String Params](#query-string-params)
+* [AJAX](#ajax)
 
 What you won't find in this project is:
 
@@ -33,114 +33,140 @@ This project is under active development so things will change dramatically as i
 [siz]: http://sizzlejs.com
 [red]: http://www.reddit.com/r/javascript/comments/279ion/sprinkles_the_activesupport_of_vanilla_js/
 
-## Array Extensions
+## Arrays
 
-Your browser is all grown up! Let it `forEach()`, `map()`, and `reduce()` your arrays.
+### `Array.prototype.$flatten()`
+
+Collapse an array of arrays into a new one-dimensional array.
 
 ``` js
-var pies = ["apple", "pecan", "cherry"];
-
-pies.forEach(function(pie, i) {
-  alert("Do you like " + pie + " pie ?");
-}); // Alerts "Do you like..." three times
-
-pies.map(function(pie, i) {
-  return pie + " pie";
-}); // Returns ["apple pie", "pecan pie", "cherry pie"]
-
-pies.reduce(function(previousPie, currentPie) {
-  return previousPie + "," + currentPie;
-}); // Returns "apple,pecan,cherry"
+[["vanilla"], ["chocolate"], ["strawberry"]].$flatten();
+// => ["vanilla", "chocolate", "strawberry"]
 ```
 
-Sprinkles adds **`$flatten()`** to `Array.prototype`.
+### `Array.prototype.$groupBy()`
+
+Group an array by the results of a function applied to each item.
 
 ``` js
-[[1], [2], [3]].$flatten(); // Returns [1, 2, 3]
-```
-
-Sprinkles also adds **`$groupBy()`**.
-
-``` js
-["cat", "dog", "turtle"].$groupBy(function(animal) {
-  return animal.length;
-})
-
-// Returns { 3: ["cat", "dog"], 6: ["turtle"] }
+["cream", "fudge", "caramel"].$groupBy(function(topping) {
+  return topping.length;
+});
+// => { 5: ["cream", "fudge"], 7: ["caramel"] }
 ```
 
 ## Cookies
 
-Working with cookies isn't very fun if all you have is `document.cookie`. Sprinkles adds **`document.$cookies`** that makes managing cookies a little easier.
+Working with cookies isn't very fun if all you have is `document.cookie`. Sprinkles adds **`document.$cookies`** to make managing cookies a little easier.
+
+Sprinkles always assumes the path on all your cookies is `/` and does not (yet) support cookies that specify `domain`, `max-age`, `expires`, or `secure`.
+
+### `document.$cookies.set()`
+
+Write a cookie by name and value.
 
 ``` js
-document.$cookies.set("flavor", "chocolate chip"); // Write a cookie, "flavor", with value "chocolate chip"
-document.$cookies.get("flavor");                   // Returns "chocolate chip"
-document.$cookies.remove("flavor");                // Remove cookie, "flavor"
-document.$cookies.clear();                         // Remove all cookies
+document.$cookies.set("flavor", "mint chocolate chip");
+// => "mint chocolate chip"
 ```
 
-Sprinkles always assumes the path on all your cookies is `/` and does not support cookies that specify `domain`, `max-age`, `expires`, or `secure` — maybe one day.
+### `document.$cookies.get()`
 
-## Date Extensions
-
-Manipulating a dates in JavaScript sucks. Sprinkles makes it suck less.
+Read the value of a cookie by name.
 
 ``` js
-var d = new Date(1986, 0, 24, 20, 25); // Jan 24th, 1986 at 20:25
-d.$beginningOfDay;                     // Jan 24th, 1986 at 00:00
-d.$endOfDay;                           // Jan 24th, 1986 at 23:59
-d.$beginningOfMonth;                   // Jan  1st, 1986 at 00:00
-d.$endOfMonth;                         // Jan 31st, 1986 at 23:59
-d.$tomorrow;                           // Jan 25th, 1986 at 20:25
-d.$yesterday;                          // Jan 23rd, 1986 at 20:25
-d.$monthName;                          // "January"
-d.$dayName;                            // "Friday"
+document.$cookies.set("flavor", "vanilla");
+document.$cookies.get("flavor");
+// => "vanilla"
 ```
 
-## DOM Manipulation
+### `document.$cookies.remove()`
 
-Sprinkles won't do things a modern browser can already do, even if that means a bit more typing.
+Delete a cookie by name. Returns the value of the cookie, just in case.
 
 ``` js
-var results = document.querySelector("#results"), // Retrieve an element
-    result  = document.createElement("div");      // Create an element
-
-result.classList.add("result");                   // Add a class to an element
-result.textContent = "One more thing...";         // Set the content of an element
-
-results.appendChild(result);                      // Add an element as a child
+document.$cookies.set("flavor", "chocolate");
+document.$cookies.remove("flavor");
+// => "chocolate"
 ```
 
-If you do a lot of this maybe you should write a function like `createElement(name, content, parent)` or use jQuery (gasp!).
+### `document.$cookies.clear()`
 
-## Node Extensions
+Deletes all cookies.
 
-If you want to clear an element of all its children, you can do `el.innerHTML = ""` (gross) or loop through all the child nodes and remove them one at a time (tedious). Sprinkles adds **`$removeChildren()`** to `Node.prototype` to make it easy.
+``` js
+document.$cookies.clear();
+```
+
+## Dates
+
+Manipulating dates in JavaScript can be a real chore. Sprinkles extends the Date class with a few helpful properties.
+
+### `Date.prototype.$beginningOfDay`
+
+Returns a new date with the time set to the beginning of the day (0:00).
+
+### `Date.prototype.$endOfDay`
+
+Returns a new date with the time set to the end of the day (23:59:59).
+
+### `Date.prototype.$beginningOfMonth`
+
+Returns a new date with the date set to the 1st and the time set to the beginning of the day (0:00).
+
+### `Date.prototype.$endOfMonth`
+
+Returns a new date with the date set to the last day of the month and the time set to the end of the day (23:59:59).
+
+### `Date.prototype.$tomorrow`
+
+Returns a new date with the date set to one day into the future. The time remains unchanged.
+
+### `Date.prototype.$yesterday`
+
+Returns a new date with the date set to one day into the past. The time remains unchanged.
+
+### `Date.prototype.$monthName`
+
+Returns the name of the month in English.
+
+### `Date.prototype.$dayName`
+
+Returns the name of the day in English.
+
+## Nodes
+
+### `Node.prototype.$removeChildren()`
+
+Removes all the children of the current node or element effectively emptying its contents. It's the equivalent to `el.innerHTML = ""` (gross) or repeatedly calling `removeChild()` (tedious).
 
 ``` js
 var ul = document.querySelector("ul");
-ul.$removeChildren(); // Removes all the list items (clears the list)
+ul.$removeChildren();
 ```
 
-## Number Extensions
+## Numbers
 
-ActiveSupport has a bunch of slick [string inflections][inf]. Sprinkles just has this one for now:
+### `Number.prototype.$ordinalize()`
+
+Returns an ordinal string used to denote order (e.g., 1st, 2nd, 3rd).
 
 ``` js
-var n;
-n = 1; n.$ordinalize()  // "1st"
-n = 22; n.$ordinalize() // "22nd"
+var n = 42;
+n.$ordinalize();
+// => "42nd"
 ```
 
 [inf]: http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html
 
-## Object Extensions
+## Objects
 
-In Ruby, there's little distinction between looping over an array or a hash — you call the same method (i.e. `each()`). The difference is the signature of the callback function. For an array, the callback receives one primary argument (each item in the aray); for a hash, the callback recieves two arguments (each key value pair in the hash). Sprinkles adds **`$forEach()`** to `Object.prototype` so that you can similarly loop through the keys and values of any object.
+### `Object.prototype.$forEach()`
+
+In Ruby, looping over an array or looping over a hash is very similiar—you call the same method, `each()`. The difference is the signature of the callback function. For an array, the callback receives one primary argument (each item in the aray); for a hash, the callback receives two arguments (each key and value).
 
 ``` js
-var object = { a: 1, b: 2, c: 3 },
+var object = { scoops: 1, flavor: "vanilla", sprinkles: true },
     keys   = [],
     values = [];
 
@@ -149,54 +175,73 @@ object.$forEach(function(key, value) {
   values.push(value);
 })
 
-// keys   = ["a", "b", "c"]
-// values = [1, 2, 3]
+// keys => ["scoops", "flavor", "sprinkles"]
+// values => [1, "vanilla", true]
 ```
 
-ActiveSupport extends all objects with a `try()` method - Sprinkles does too. `$try()` allows you to attempt to call a method or access a property on an object that might otherwise be undefined.
+### `Object.prototype.$try()`
+
+Try to access a property or call a function of an object that might be `undefined`. Helps to avoid writing conditional statements.
 
 ``` js
-var car = { make: "Porsche", model: "911", start: function(key) { } };
-car.$try("make")         // Returns "Porsche"
-car.$try("color")        // Returns undefined
-car.$try("start", "...") // Calls start() and passes in "..." as the key
+// Instead of this...
+if (iceCream.addToppings) iceCream.addToppings("caramel", "coconut", "cream");
+// Try this...
+iceCream.try("addToppings", "caramel", "coconut", "cream");
 ```
 
 ## Query String Params
 
-Use a global class method to parse the query string params from any URL:
+### `Sprinkles.QueryString.parse()`
+
+Returns an object representing the query string params from any URL. Also works on query string fragments too like `window.location.search`.
 
 ``` js
-Sprinkles.QueryString.parse("http://example.com/?a=1&b=2") // Returns { "a": "1", "b": "2" }
+Sprinkles.QueryString.parse("http://icecreamfinder.com/?flavor=strawberry&location=san%20francisco");
+// => { "flavor": "strawberry", "location": "san francisco" }
 ```
 
-Sprinkles also adds a property to `Location.prototype` to parse the query string params in `window.location.search`:
+### `window.location.$params`
+
+Returns an object representing the query string params from `window.location.search`. Pair with `forEach()` to loop through URL parameters.
 
 ``` js
-// Assume window.location = "http://example.com/?a=1&b=2"
-window.location.$params      // Returns { "a": "1", "b": "2" }
-window.location.$params["a"] // Returns "1"
-```
+// Assume window.location = "http://icecreamfinder.com/?flavor=strawberry
+window.location.$params
+// => { "flavor": "strawberry" }
+window.location.$params["flavor"]
+// => "strawberry"
 
-## XHR (AJAX)
-
-Creating an `XMLHttpRequest` object from scratch is tedious, so **`get()`** and **`getJSON()`** have been added to `window` as convenience.
-
-``` js
-window.$get("http://example.com/plain-text",
-  function(text) { console.log(text) },     // success
-  function(text) { console.log(text) }      // error
-);
-
-window.$getJSON("http://example.com/json",
-  function(object) { console.log(object) }, // success
-  function(object) { console.log(object) }  // error
+window.location.$params.$forEach(function(key, value) {
+  // Loop through every parameter
 })
 ```
 
-Since all variables and methods delegate to `window` you can simply call `$get()`.
+## AJAX
+
+### `$get()`
+
+Perform an HTTP GET request to a specified resource and call the appropriate callback when the request is complete.
+
+``` js
+$get("http://api.icecreamfinder.com/stores.csv", success, error);
+
+function success(response) {
+  // Handle the success...
+};
+
+function error(response) {
+  // Handle the error...
+};
+```
+
+### `$getJSON()`
+
+Just like `$get()` but the response is parsed as JSON before the success or error callbacks are called.
 
 ## Development
+
+### Environment
 
 Sprinkles uses [Grunt][grn] to run development-oriented tasks. Grunt relies on [Node Packaged Modules][npm] (NPM). You can install NPM with [Homebrew][hmb]. With NPM installed and from inside the Sprinkles project root run:
 
@@ -204,17 +249,15 @@ Sprinkles uses [Grunt][grn] to run development-oriented tasks. Grunt relies on [
 npm install
 ```
 
-This is the Ruby equivalent of running `bundle install`. Now you can run the following tasks individually:
+This is the Ruby equivalent of running `bundle install`. You can run tasks individually if you must but the default task, which is available simply by calling `grunt` should be all you need.
 
-* `grunt concat`
-* `grunt jshint`
-* `grunt uglify`
+When you're done with a feature, you should [semantically](sem) increment the version number in `package.json` and run `grunt` to update the distribution files.
 
-Unfortunately, you cannot run tests from the command line. This is due to the fact that things like PhantomJS, which usually drive headless tests, are not real browsers. This means that things like `document.cookie` and `window.location` don't behave like you'd expect. It seems sensible that running tests in-browser takes priority over running them from the command line so for now to run them boot up Sprinkles in web server (e.g., `python -m SimpleHTTPServer 8080`) and hit the test file directly (e.g. http://localhost:8080/test/index.html).
+### Tests
+
+Unfortunately, you cannot run Sprinkles' tests from the command line. This is due to the fact that things like PhantomJS, which usually drive headless tests, are not real browsers. This means that things like `document.cookie` and `window.location` don't behave like you'd expect. It seems sensible that running tests in-browser takes priority over running them from the command line so for now to run them boot up Sprinkles in web server (e.g., `python -m SimpleHTTPServer 8080`) and hit the test file directly (e.g. http://localhost:8080/test/index.html).
 
 Please note there is a separate test file dedicated to testing query strings because if you set `window.location.search` during a test, the browser will reload the page. In a separate file, it's possible to test query string parameters in isolation.
-
-When you're done with a feature, you should [semantically](sem) increment the version number in `package.json` and run `grunt build` to update the distribution files.
 
 [grn]: http://gruntjs.com
 [npm]: https://www.npmjs.org
