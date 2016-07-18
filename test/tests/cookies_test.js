@@ -13,6 +13,10 @@ describe("document.$cookies", function() {
       document.$cookies.set("foo", "bar");
       assert.equal(document.cookie, "foo=bar");
     });
+
+    it("returns the value of the cookie", function() {
+      assert.equal(document.$cookies.set("foo", "bar"), "bar");
+    });
   });
 
   describe("get()", function() {

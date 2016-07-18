@@ -1,6 +1,7 @@
 Document.prototype.$cookies = {
   set: function(key, value) {
     document.cookie = key + "=" + value + "; path=/";
+    return value;
   },
 
   get: function(key) {
