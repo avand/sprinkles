@@ -57,7 +57,7 @@ Group an array by the results of a function applied to each item.
 
 ## Cookies
 
-Working with cookies isn't very fun if all you have is `document.cookie`. Sprinkles adds **`document.$cookies`** to make managing cookies a little easier.
+Working with cookies isn't very fun if all you have is `document.cookie`. Sprinkles makes managing cookies a little easier.
 
 Sprinkles always assumes the path on all your cookies is `/` and does not (yet) support cookies that specify `domain`, `max-age`, `expires`, or `secure`.
 
