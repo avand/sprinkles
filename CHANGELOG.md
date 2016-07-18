@@ -26,6 +26,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - `Location.prototype.$getParams()`
 - `Location.prototype.$getParam()`
 - `String.prototype.$ordinalize()`
+- `Array.prototype.$includes()`
 
 ## [1.4.0] - 2014-07-09
 ### Added

@@ -15,7 +15,3 @@ Array.prototype.$groupBy = function(accumulator) {
 
   return result;
 };
-
-Array.prototype.$includes = function(property) {
-  return this.indexOf(property) >= 0;
-};

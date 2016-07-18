@@ -27,12 +27,4 @@ describe("Array.prototype", function() {
       }), { 3: ["cat", "dog"], 6: ["turtle"] });
     });
   });
-
-  describe("$includes()", function() {
-    it("returns true if the object exists in the array", function() {
-      assert.isTrue([1, 2, 'a', 'b', true].$includes('b'));
-      assert.isFalse([1, 2, 'a', 'b', true].$includes('d'));
-      assert.isTrue([1, 2, 'a', 'b', true].$includes(true));
-    });
-  });
 });

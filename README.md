@@ -69,14 +69,6 @@ Sprinkles also adds **`$groupBy()`**.
 // Returns { 3: ["cat", "dog"], 6: ["turtle"] }
 ```
 
-Sprinkles adds **`$includes()`**.
-
-``` js
-["mac", "linux", "windows"].$includes('mac');
-
-// Returns true
-```
-
 ## Cookies
 
 Working with cookies isn't very fun if all you have is `document.cookie`. Sprinkles adds **`document.$cookies`** that makes managing cookies a little easier.
