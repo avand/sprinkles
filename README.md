@@ -1,37 +1,32 @@
 Sprinkles 🍩
-===========
+============
 
-If you've used [Ruby on Rails][ror] you're probably familiar with [ActiveSupport][as]. Sprinkles is like ActiveSupport for your browser. It's chock-full of helpers that you'll use every day. Things like flattening or grouping an array, reading and writing cookies, rewinding a date to "yesterday," grabbing parameters from the query string, and making HTTP requests.
+Sprinkles makes your browser more developer friendly. Sprinkles extends built-in JavaScript objects to make them more useful and provides generic CSS utility classes that you'd want on every project.
 
-The goal of this project is to isolate a small collection of helpers and extensions to make our lives as front-end engineers a little easier—just like ActiveSupport has done for Ruby developers.
+## Preface
 
-Although monkey-patching is generally considered a [bad idea][red], it is syntactically optimal so Sprinkles prefixes all methods and globals with a "$" to differentiate them from any native methods your client may have.
+If you've used [Ruby on Rails][ror] you're probably familiar with [ActiveSupport][as]. Sprinkles does to browser-based JavaScript what ActiveSupport does to Ruby. Sprinkles will make it easier to work with arrays, read and write cookies, rewind a date to "yesterday," grab parameters from the query string, make asynchronous HTTP requests, and more.
 
-In Sprinkles, you'll find lots of useful methods that help you work with:
-
-* [Arrays](#arrays)
-* [Cookies](#cookies)
-* [Dates](#dates)
-* [Nodes](#nodes)
-* [Numbers](#numbers)
-* [Objects](#objects)
-* [Query String Params](#query-string-params)
-* [AJAX](#ajax)
-
-What you won't find in this project is:
-
-* Effects or animation (e.g., `fadeOut()`)
-* Browser backwards-compatibility
-* Heavy-handed DOM manipulation (e.g., `wrapAll()`)
-* DOM selection (e.g., [Sizzle][siz])
-* Anything a modern browser can already do
-
-This project is under active development so things will change dramatically as it matures. For contributions, please fork and submit pull requests.
+Sprinkles works by adding function and properties to existing objects. This kind of "monkey-patching" is generally considered a [bad idea][red] but it is syntactically optimal. So to get the best of both worlds, Sprinkles prefixes any methods or properties it adds to built-in objects with a "$" to differentiate them from any native methods the client may have.
 
 [as]:  https://github.com/rails/rails/tree/master/activesupport
 [ror]: http://rubyonrails.org
-[siz]: http://sizzlejs.com
 [red]: http://www.reddit.com/r/javascript/comments/279ion/sprinkles_the_activesupport_of_vanilla_js/
+
+## Documentation
+
+* JavaScript
+  * [Arrays](#arrays)
+  * [Cookies](#cookies)
+  * [Dates](#dates)
+  * [Nodes](#nodes)
+  * [Numbers](#numbers)
+  * [Objects](#objects)
+  * [Query String Params](#query-string-params)
+  * [AJAX](#ajax)
+* CSS
+  * Floats
+  * Positioning
 
 ## Arrays
 
