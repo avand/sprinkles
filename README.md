@@ -32,6 +32,7 @@ Pop open the `dist` folder in the project root and grab the latest version. Mini
   * [Lists](#lists)
   * [Opacity](#opacity)
   * [Position](#position)
+  * [Print](#print)
   * [Type](#type)
 
 ## JavaScript
