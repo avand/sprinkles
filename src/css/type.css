@@ -14,3 +14,5 @@
 .lowercase { text-transform: lowercase !important; }
 .uppercase { text-transform: uppercase !important; }
 .capitalize { text-transform: capitalize !important; }
+
+.no-wrap { white-space: nowrap !important; }

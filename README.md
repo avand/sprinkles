@@ -351,6 +351,8 @@ Hide elements for screen but show them for print with `.print-show`. Hide elemen
 .lowercase { text-transform: lowercase; }
 .uppercase { text-transform: uppercase; }
 .capitalize { text-transform: capitalize; }
+
+.no-wrap { white-space: nowrap; }
 ```
 
 ---
