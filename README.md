@@ -22,6 +22,7 @@ If you've used [Ruby on Rails] you're probably familiar with [ActiveSupport]. Sp
 * CSS
   * [Display](#display)
   * [Floats](#floats)
+  * [Lists](#lists)
   * [Positioning](#positioning)
 
 ## JavaScript
@@ -262,6 +263,16 @@ Float an element to the left or to the right, unless used in conjunction with `.
 .right { float: right; }
 ```
 
+### Lists
+
+``` css
+ul.unstyled,
+ol.unstyled {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+```
 
 ### Positioning
 
