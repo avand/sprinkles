@@ -258,11 +258,14 @@ Note: If you'd like to see the other cursor types implemented in Sprinkles, plea
 
 ### Display
 
+For the most part, you can show/hide elements by adding/removing `.hide`. However, if an element is already hidden due to other CSS rules, you can add `.show` to make it appear.
+
 ``` css
 .block { display: block; }
 .inline { display: inline; }
 .inline-block { display: inline-block; }
 .hide { display: none; }
+.show { display: inherit; }
 ```
 
 ### Float
