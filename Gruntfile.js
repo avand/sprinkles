@@ -7,17 +7,12 @@ module.exports = function(grunt) {
         dest: "dist/<%= pkg.name %>-<%= pkg.version %>.css"
       },
       js: {
-        options: {
-          separator: ";"
-        },
-        dist: {
-          src:  ["src/js/**/*.js"],
-          dest: "dist/<%= pkg.name %>-<%= pkg.version %>.js"
-        }
+        src:  "src/js/**/*.js",
+        dest: "dist/<%= pkg.name %>-<%= pkg.version %>.js"
       }
     },
     jshint: {
-      files: ["Gruntfile.js", "src/**/*.js", "test/*.js"],
+      files: ["Gruntfile.js", "src/js/**/*.js", "test/*.js"],
     },
     uglify: {
       dist: {
