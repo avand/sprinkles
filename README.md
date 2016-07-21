@@ -6,6 +6,12 @@ If you've used [Ruby on Rails] you're probably familiar with [ActiveSupport]. Sp
 
 ---
 
+# Installation
+
+Pop open the `dist` folder in the project root and grab the latest version. Minified versions are there if you need them. Currently Sprinkles clocks in at a whopping 4.6 KB.
+
+---
+
 # Documentation
 
 ## Table of Contents
