@@ -262,7 +262,7 @@ Note: If you'd like to see the other cursor types implemented in Sprinkles, plea
 .block { display: block; }
 .inline { display: inline; }
 .inline-block { display: inline-block; }
-.hidden { display: none; }
+.hide { display: none; }
 ```
 
 ### Float
@@ -314,18 +314,18 @@ ol.unstyled {
 
 ### Print
 
-Hide elements for screen but show them for print with `.print-only`. Hide elements for print but show them for screen with `.dont-print`. Use `.print` to unhide an element for print that's otherwise hidden due to other CSS rules. Make sure when including Sprinkles' CSS that you use `<link ... media="all">` or these classes will not work.
+Hide elements for screen but show them for print with `.print-show`. Hide elements for print but show them for screen with `.print-hide`. Use `.print` to unhide an element for print that's otherwise hidden due to other CSS rules. Make sure when including Sprinkles' CSS that you use `<link ... media="all">` or these classes will not work.
 
 ``` css
 @media screen {
-  .print-only { display: none; }
+  .print-show { display: none; }
 }
 
 @media print {
   .print,
-  .print.hidden { display: inherit; }
+  .print.hide { display: inherit; }
 
-  .dont-print { display: none; }
+  .print-hide { display: none; }
 }
 ```
 

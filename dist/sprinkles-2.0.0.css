@@ -3,7 +3,7 @@
 .block { display: block !important; }
 .inline { display: inline !important; }
 .inline-block { display: inline-block !important; }
-.hidden { display: none !important; }
+.hide { display: none !important; }
 
 .left  { float: left !important; }
 .right { float: right !important; }
@@ -36,14 +36,14 @@ ol.unstyled {
 }
 
 @media screen {
-  .print-only { display: none !important; }
+  .print-show { display: none !important; }
 }
 
 @media print {
   .print,
-  .print.hidden { display: inherit !important; }
+  .print.hide { display: inherit !important; }
 
-  .dont-print { display: none !important; }
+  .print-hide { display: none !important; }
 }
 
 .align-center { text-align: center !important; }
