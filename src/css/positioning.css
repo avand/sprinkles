@@ -3,11 +3,12 @@
 .absolute { position: absolute !important; }
 
 .absolute.top, .fixed.top { top: 0 !important; }
-.absolute.right, .fixed.right { right: 0 !important; }
+.absolute.right, .fixed.right { right: 0 !important; float: none !important; }
 .absolute.bottom, .fixed.bottom { bottom: 0 !important; }
-.absolute.left, .fixed.left { left: 0 !important; }
+.absolute.left, .fixed.left { left: 0 !important; float: none !important; }
 
-.full-bleed {
+.fixed.full-bleed,
+.absolute.full-bleed {
   top: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
