@@ -24,7 +24,7 @@ If you've used [Ruby on Rails] you're probably familiar with [ActiveSupport]. Sp
   * [Floats](#floats)
   * [Lists](#lists)
   * [Opacity](#opacity)
-  * [Positioning](#positioning)
+  * [Position](#position)
 
 ## JavaScript
 
@@ -282,7 +282,7 @@ ol.unstyled {
 .transparent { opacity: 0; }
 ```
 
-### Positioning
+### Position
 
 ``` css
 .fixed { position: fixed; }

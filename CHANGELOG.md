@@ -9,7 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - `Sprinkles.QueryString.parse()` to parse query string params from any URL.
 - `location.$params` returns the params in `window.location.search`.
 - `Number.prototype.$ordinalize()` (moved from `String.prototype`).
-- CSS utilities for display, floats, lists, opacity, and positioning.
+- CSS utilities for display, floats, lists, opacity, and position.
 
 ### Changed
 - Moved off QUnit in favor of Mocha.
