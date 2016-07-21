@@ -22,7 +22,7 @@ If you've used [Ruby on Rails] you're probably familiar with [ActiveSupport]. Sp
 * CSS
   * [Cursor](#cursor)
   * [Display](#display)
-  * [Floats](#floats)
+  * [Float](#float)
   * [Lists](#lists)
   * [Opacity](#opacity)
   * [Position](#position)
@@ -265,7 +265,7 @@ Note: If you'd like to see the other cursor types implemented in Sprinkles, plea
 .hidden { display: none; }
 ```
 
-### Floats
+### Float
 
 Float an element to the left or to the right, unless used in conjunction with `.fixed` or `.absolute`, in which case no floating will occur.
 
