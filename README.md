@@ -5,13 +5,9 @@ Sprinkles makes your browser more developer friendly. Sprinkles extends built-in
 
 ## Preface
 
-If you've used [Ruby on Rails][ror] you're probably familiar with [ActiveSupport][as]. Sprinkles does to browser-based JavaScript what ActiveSupport does to Ruby. Sprinkles will make it easier to work with arrays, read and write cookies, rewind a date to "yesterday," grab parameters from the query string, make asynchronous HTTP requests, and more.
+If you've used [Ruby on Rails] you're probably familiar with [ActiveSupport]. Sprinkles does to browser-based JavaScript what ActiveSupport does to Ruby. Sprinkles makes it easier to work with arrays, cookies, dates, query string parameters, local storage, and other parts of your browser that might be a bit prickly at times.
 
-Sprinkles works by adding function and properties to existing objects. This kind of "monkey-patching" is generally considered a [bad idea][red] but it is syntactically optimal. So to get the best of both worlds, Sprinkles prefixes any methods or properties it adds to built-in objects with a "$" to differentiate them from any native methods the client may have.
-
-[as]:  https://github.com/rails/rails/tree/master/activesupport
-[ror]: http://rubyonrails.org
-[red]: http://www.reddit.com/r/javascript/comments/279ion/sprinkles_the_activesupport_of_vanilla_js/
+Sprinkles works by adding functions and properties to existing objects. This kind of [monkey patching] is generally considered bad practice but it is often syntactically superior (think `$.each([])` vs. `[].forEach()`). So to get the best of both worlds, Sprinkles prefixes any methods or properties it adds to built-in objects with a "$" to differentiate them from any native methods the client may have.
 
 ## Documentation
 
@@ -258,3 +254,7 @@ Please note there is a separate test file dedicated to testing query strings bec
 [npm]: https://www.npmjs.org
 [hmb]: http://brew.sh
 [sem]: http://semver.org
+
+[ActiveSupport]: https://github.com/rails/rails/tree/master/activesupport
+[Ruby on Rails]: http://rubyonrails.org
+[monkey patching]: http://www.reddit.com/r/javascript/comments/279ion/sprinkles_the_activesupport_of_vanilla_js/
