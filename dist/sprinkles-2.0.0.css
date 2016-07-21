@@ -55,6 +55,7 @@ ol.unstyled {
 .overline { text-decoration: overline !important; }
 .strikethrough { text-decoration: line-through !important; }
 .underline { text-decoration: underline !important; }
+.no-underline { text-decoration: none !important; }
 
 .italic { font-style: italic !important; }
 .oblique { font-style: oblique !important; }

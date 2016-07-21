@@ -343,6 +343,7 @@ Hide elements for screen but show them for print with `.print-show`. Hide elemen
 .overline { text-decoration: overline; }
 .strikethrough { text-decoration: line-through; }
 .underline { text-decoration: underline; }
+.no-underline { text-decoration: none; }
 
 .italic { font-style: italic; }
 .oblique { font-style: oblique; }
