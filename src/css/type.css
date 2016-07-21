@@ -1,0 +1,15 @@
+.align-center { text-align: center !important; }
+.align-left { text-align: left !important; }
+.align-right { text-align: right !important; }
+.align-justify { text-align: justify !important; }
+
+.overline { text-decoration: overline !important; }
+.strikethrough { text-decoration: line-through !important; }
+.underline { text-decoration: underline !important; }
+
+.italic { font-style: italic !important; }
+.oblique { font-style: oblique !important; }
+
+.lowercase { text-transform: lowercase !important; }
+.uppercase { text-transform: uppercase !important; }
+.capitalize { text-transform: capitalize !important; }

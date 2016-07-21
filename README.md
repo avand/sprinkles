@@ -25,6 +25,7 @@ If you've used [Ruby on Rails] you're probably familiar with [ActiveSupport]. Sp
   * [Lists](#lists)
   * [Opacity](#opacity)
   * [Position](#position)
+  * [Type](#type)
 
 ## JavaScript
 
@@ -300,6 +301,26 @@ ol.unstyled {
   bottom: 0;
   left: 0;
 }
+```
+
+### Type
+
+``` css
+.align-center { text-align: center; }
+.align-left { text-align: left; }
+.align-right { text-align: right; }
+.align-justify { text-align: justify; }
+
+.overline { text-decoration: overline; }
+.strikethrough { text-decoration: line-through; }
+.underline { text-decoration: underline; }
+
+.italic { font-style: italic; }
+.oblique { font-style: oblique; }
+
+.lowercase { text-transform: lowercase; }
+.uppercase { text-transform: uppercase; }
+.capitalize { text-transform: capitalize; }
 ```
 
 ---
