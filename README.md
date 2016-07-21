@@ -20,6 +20,7 @@ If you've used [Ruby on Rails] you're probably familiar with [ActiveSupport]. Sp
   * [Query String Params](#query-string-params)
   * [AJAX](#ajax)
 * CSS
+  * [Display](#display)
   * [Floats](#floats)
   * [Positioning](#positioning)
 
@@ -242,6 +243,15 @@ When building up a webpage from scratch, it's often easiest to start with inline
 The CSS utilities here also help reduce the amount of one-off CSS rules in your stylesheets. If the heading of one special page should be centered, writing `<h1 class="align-center">` is better than adding a special rule to your CSS file. This is especially true on larger sites, where a mistargeted selector could have unintended consequences for other pages.
 
 Although not indicated below, all the CSS properties applied by the utilities here are considered `!important` to avoid specificity issues.
+
+### Display
+
+``` css
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.hidden { display: none; }
+```
 
 ### Floats
 
