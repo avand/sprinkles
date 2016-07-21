@@ -20,8 +20,8 @@ If you've used [Ruby on Rails] you're probably familiar with [ActiveSupport]. Sp
   * [Query String Params](#query-string-params)
   * [AJAX](#ajax)
 * CSS
-  * Floats
-  * Positioning
+  * [Floats](#floats)
+  * [Positioning](#positioning)
 
 ## JavaScript
 
@@ -232,6 +232,46 @@ function error(response) {
 #### `$getJSON()`
 
 Just like `$get()` but the response is parsed as JSON before the success or error callbacks are called.
+
+## CSS
+
+Sprinkles' CSS utilities are helpful for two reasons.
+
+When building up a webpage from scratch, it's often easiest to start with inline styles. With inline styles, at least to start, you get something working quickly. Then you can go back and reorganize things later. The CSS utilities in Sprinkles allow you to mix and match classes to apply basic styles to elements without having to actually write any CSS.
+
+The CSS utilities here also help reduce the amount of one-off CSS rules in your stylesheets. If the heading of one special page should be centered, writing `<h1 class="align-center">` is better than adding a special rule to your CSS file. This is especially true on larger sites, where a mistargeted selector could have unintended consequences for other pages.
+
+Although not indicated below, all the CSS properties applied by the utilities here are considered `!important` to avoid specificity issues.
+
+### Floats
+
+Float an element to the left or to the right, unless used in conjunction with `.fixed` or `.absolute`, in which case no floating will occur.
+
+``` css
+.left { float: left; }
+.right { float: right; }
+```
+
+
+### Positioning
+
+``` css
+.fixed { position: fixed; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+
+.top { top: 0; }
+.right { right: 0; }
+.bottom { bottom: 0; }
+.left { left: 0; }
+
+.full-bleed {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+```
 
 ---
 
