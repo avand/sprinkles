@@ -350,9 +350,11 @@ When you're done with a feature, you should [semantically](sem) increment the ve
 
 ## Tests
 
-Unfortunately, you cannot run Sprinkles' tests from the command line. This is due to the fact that things like PhantomJS, which usually drive headless tests, are not real browsers. This means that things like `document.cookie` and `window.location` don't behave like you'd expect. It seems sensible that running tests in-browser takes priority over running them from the command line so for now to run them boot up Sprinkles in web server (e.g., `python -m SimpleHTTPServer 8080`) and hit the test file directly (e.g. http://localhost:8080/test/index.html).
+Unfortunately, you cannot run Sprinkles' tests from the command line. This is due to the fact that things like PhantomJS, which usually drive headless tests, are not real browsers. This means that things like `document.cookie` and `window.location` don't behave like you'd expect. It seems sensible that running tests in-browser takes priority over running them from the command line so for now to run them boot up Sprinkles in web server (e.g., `python -m SimpleHTTPServer 8080`) and hit the test file directly (e.g. http://localhost:8080/test/js/index.html).
 
 Please note there is a separate test file dedicated to testing query strings because if you set `window.location.search` during a test, the browser will reload the page. In a separate file, it's possible to test query string parameters in isolation.
+
+You'll also find a bunch of HTML files in `test/css` that serve as sandboxes to test the CSS classes in isolation.
 
 [grn]: http://gruntjs.com
 [npm]: https://www.npmjs.org
