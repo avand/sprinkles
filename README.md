@@ -1,6 +1,8 @@
 Sprinkles
 =========
 
+**Awww yeah! [Version 2](https://github.com/avand/sprinkles/tree/v2.0.0) is coming soon, chock-full of goodies like CSS utilities, XHR promises, animation & localStorage helpers, and much more! For a complete list of upcoming improvements, please check out the [v2 milestone](https://github.com/avand/sprinkles/milestone/1). Enjoy!**
+
 Sprinkles is [ActiveSupport][as] for your browser.
 
 The goal of this project is to isolate a small collection of helpers and extensions to make our lives as front-end engineers a little easier — just like ActiveSupport has done for [Ruby on Rails][ror] engineers.
