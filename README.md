@@ -312,6 +312,23 @@ ol.unstyled {
 }
 ```
 
+### Print
+
+Hide elements for screen but show them for print with `.print-only`. Hide elements for print but show them for screen with `.dont-print`. Use `.print` to unhide an element for print that's otherwise hidden due to other CSS rules. Make sure when including Sprinkles' CSS that you use `<link ... media="all">` or these classes will not work.
+
+``` css
+@media screen {
+  .print-only { display: none; }
+}
+
+@media print {
+  .print,
+  .print.hidden { display: inherit; }
+
+  .dont-print { display: none; }
+}
+```
+
 ### Type
 
 ``` css
