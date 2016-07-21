@@ -13,6 +13,9 @@ ol.unstyled {
   padding: 0 !important;
 }
 
+.opaque { opacity: 1 !important; }
+.transparent { opacity: 0 !important; }
+
 .fixed { position: fixed !important; }
 .relative { position: relative !important; }
 .absolute { position: absolute !important; }

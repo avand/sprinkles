@@ -23,6 +23,7 @@ If you've used [Ruby on Rails] you're probably familiar with [ActiveSupport]. Sp
   * [Display](#display)
   * [Floats](#floats)
   * [Lists](#lists)
+  * [Opacity](#opacity)
   * [Positioning](#positioning)
 
 ## JavaScript
@@ -272,6 +273,13 @@ ol.unstyled {
   margin: 0;
   padding: 0;
 }
+```
+
+### Opacity
+
+``` css
+.opaque { opacity: 1; }
+.transparent { opacity: 0; }
 ```
 
 ### Positioning
