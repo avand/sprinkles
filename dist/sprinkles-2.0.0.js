@@ -1,3 +1,28 @@
+Document.prototype.$cookies = {
+  set: function(key, value) {
+    document.cookie = key + "=" + value + "; path=/";
+    return value;
+  },
+
+  get: function(key) {
+    var matches = document.cookie.match(new RegExp(key + "=(.*)(;)?"));
+    return matches ? matches[1] : null;
+  },
+
+  remove: function(key) {
+    var value = this.get(key);
+    document.cookie = key + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    return value;
+  },
+
+  clear: function() {
+    document.cookie.split(";").forEach(function(cookie) {
+      var key = cookie.replace(/=.*/, "");
+      this.remove(key);
+    }.bind(this));
+  }
+};
+
 Array.prototype.$flatten = function() {
   return this.reduce(function(a, b) {
     return a.concat(b);
@@ -16,31 +41,7 @@ Array.prototype.$groupBy = function(accumulator) {
   return result;
 };
 
-Array.prototype.$includes = function(property) {
-  return this.indexOf(property) >= 0;
-};
-;Document.prototype.$cookies = {
-  set: function(key, value) {
-    document.cookie = key + "=" + value + "; path=/";
-  },
-
-  get: function(key) {
-    var matches = document.cookie.match(new RegExp(key + "=(.*)(;)?"));
-    return matches ? matches[1] : null;
-  },
-
-  remove: function(key) {
-    document.cookie = key + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-  },
-
-  clear: function() {
-    document.cookie.split(";").forEach(function(cookie) {
-      var key = cookie.replace(/=.*/, "");
-      this.remove(key);
-    }.bind(this));
-  }
-};
-;Object.defineProperties(Date.prototype, {
+Object.defineProperties(Date.prototype, {
   $beginningOfDay: {
     get: function() {
       return new Date(this.getFullYear(), this.getMonth(), this.getDate());
@@ -110,19 +111,22 @@ Array.prototype.$includes = function(property) {
     }
   }
 });
-;Object.defineProperties(Location.prototype, {
+
+Object.defineProperties(Location.prototype, {
   $params: {
     get: function() {
       return Sprinkles.QueryString.parse(this.search);
     }
   }
 });
-;Node.prototype.$removeChildren = function() {
+
+Node.prototype.$removeChildren = function() {
   while (this.hasChildNodes()) {
     this.removeChild(this.lastChild);
   }
 };
-;Number.prototype.$ordinalize = function() {
+
+Number.prototype.$ordinalize = function() {
   var abs = Math.abs(this);
 
   if ((abs % 100) >= 11 && (abs % 100) <= 13) {
@@ -136,24 +140,34 @@ Array.prototype.$includes = function(property) {
     }
   }
 };
-;Object.prototype.$forEach = function(callback) {
-  for (var key in this) {
-    if (this.hasOwnProperty(key)) callback(key, this[key]);
-  }
-};
 
-Object.prototype.$try = function() {
-  var args = Array.prototype.slice.call(arguments);
-  var method = this[args.shift()];
-  if (method === undefined) {
-    return;
-  } else if (typeof method === 'function') {
-    return method.apply(null, args);
-  } else {
-    return method;
+Object.defineProperties(Object.prototype, {
+  $forEach: {
+    enumerable: false,
+    value: function(callback) {
+      for (var key in this) {
+        if (this.hasOwnProperty(key)) callback(key, this[key]);
+      }
+    }
+  },
+
+  $try: {
+    enumerable: false,
+    value: function() {
+      var args = Array.prototype.slice.call(arguments);
+      var method = this[args.shift()];
+      if (method === undefined) {
+        return;
+      } else if (typeof method === 'function') {
+        return method.apply(null, args);
+      } else {
+        return method;
+      }
+    }
   }
-};
-;Sprinkles = typeof Sprinkles == "undefined" ? {} : Sprinkles;
+});
+
+Sprinkles = typeof Sprinkles == "undefined" ? {} : Sprinkles;
 
 Sprinkles.QueryString = {
   parse: function(url) {
@@ -171,8 +185,9 @@ Sprinkles.QueryString = {
       return params;
     }, {});
   }
-}
-;function $get(url, success, error) {
+};
+
+function $get(url, success, error) {
   var xhr = new XMLHttpRequest();
 
   xhr.onreadystatechange = function() {
@@ -187,11 +202,11 @@ Sprinkles.QueryString = {
 
   xhr.open("GET", url);
   xhr.send();
-};
+}
 
 function $getJSON(url, success, error) {
   $get(url,
     function(json) { success(JSON.parse(json)); },
     function(json) { error(JSON.parse(json)); }
   );
-};
+}
