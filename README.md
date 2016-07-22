@@ -342,6 +342,8 @@ Hide elements for screen but show them for print with `.print-show`. Hide elemen
 ### Type
 
 ``` css
+.bold { font-weight: bold; }
+
 .align-center { text-align: center; }
 .align-left { text-align: left; }
 .align-right { text-align: right; }
