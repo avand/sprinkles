@@ -193,7 +193,7 @@ Try to access a property or call a function of an object that might be `undefine
 // Instead of this...
 if (iceCream.addToppings) iceCream.addToppings("caramel", "coconut", "cream");
 // Try this...
-iceCream.try("addToppings", "caramel", "coconut", "cream");
+iceCream.$try("addToppings", "caramel", "coconut", "cream");
 ```
 
 ### Query String Params
