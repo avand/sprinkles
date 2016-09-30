@@ -1,11 +1,13 @@
 Object.defineProperties(Date.prototype, {
   $beginningOfDay: {
+    enumerable: false,
     get: function() {
       return new Date(this.getFullYear(), this.getMonth(), this.getDate());
     }
   },
 
   $endOfDay: {
+    enumerable: false,
     get: function() {
       return new Date(this.getFullYear(), this.getMonth(), this.getDate(),
         23, 59, 59, 999);
@@ -13,12 +15,14 @@ Object.defineProperties(Date.prototype, {
   },
 
   $beginningOfMonth: {
+    enumerable: false,
     get: function() {
       return new Date(this.getFullYear(), this.getMonth());
     }
   },
 
   $endOfMonth: {
+    enumerable: false,
     get: function() {
       return new Date(this.getFullYear(), this.getMonth() + 1, 0,
         23, 59, 59, 999);
@@ -26,6 +30,7 @@ Object.defineProperties(Date.prototype, {
   },
 
   $monthName: {
+    enumerable: false,
     get: function() {
       return ["January", "February", "March", "April",
         "May", "June", "July", "August",
@@ -34,6 +39,7 @@ Object.defineProperties(Date.prototype, {
   },
 
   $dayName: {
+    enumerable: false,
     get: function() {
       return ["Sunday", "Monday", "Tuesday", "Wednesday",
         "Thursday", "Friday", "Saturday"][this.getDay()];
@@ -41,6 +47,7 @@ Object.defineProperties(Date.prototype, {
   },
 
   $tomorrow: {
+    enumerable: false,
     get: function() {
       return new Date(
         this.getFullYear(),
@@ -55,6 +62,7 @@ Object.defineProperties(Date.prototype, {
   },
 
   $yesterday: {
+    enumerable: false,
     get: function() {
       return new Date(
         this.getFullYear(),

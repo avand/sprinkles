@@ -23,32 +23,42 @@ Document.prototype.$cookies = {
   }
 };
 
-Array.prototype.$flatten = function() {
-  return this.reduce(function(a, b) {
-    return a.concat(b);
-  }, []);
-};
+Object.defineProperties(Array.prototype, {
+  $flatten: {
+    enumerable: false,
+    value: function() {
+      return this.reduce(function(a, b) {
+        return a.concat(b);
+      }, []);
+    }
+  },
 
-Array.prototype.$groupBy = function(accumulator) {
-  var result = {};
+  $groupBy: {
+    enumerable: false,
+    value: function(accumulator) {
+      var result = {};
 
-  this.forEach(function(n) {
-    var key = accumulator(n);
-    if (result[key] === undefined) result[key] = [];
-    result[key].push(n);
-  });
+      this.forEach(function(n) {
+        var key = accumulator(n);
+        if (result[key] === undefined) result[key] = [];
+        result[key].push(n);
+      });
 
-  return result;
-};
+      return result;
+    }
+  }
+});
 
 Object.defineProperties(Date.prototype, {
   $beginningOfDay: {
+    enumerable: false,
     get: function() {
       return new Date(this.getFullYear(), this.getMonth(), this.getDate());
     }
   },
 
   $endOfDay: {
+    enumerable: false,
     get: function() {
       return new Date(this.getFullYear(), this.getMonth(), this.getDate(),
         23, 59, 59, 999);
@@ -56,12 +66,14 @@ Object.defineProperties(Date.prototype, {
   },
 
   $beginningOfMonth: {
+    enumerable: false,
     get: function() {
       return new Date(this.getFullYear(), this.getMonth());
     }
   },
 
   $endOfMonth: {
+    enumerable: false,
     get: function() {
       return new Date(this.getFullYear(), this.getMonth() + 1, 0,
         23, 59, 59, 999);
@@ -69,6 +81,7 @@ Object.defineProperties(Date.prototype, {
   },
 
   $monthName: {
+    enumerable: false,
     get: function() {
       return ["January", "February", "March", "April",
         "May", "June", "July", "August",
@@ -77,6 +90,7 @@ Object.defineProperties(Date.prototype, {
   },
 
   $dayName: {
+    enumerable: false,
     get: function() {
       return ["Sunday", "Monday", "Tuesday", "Wednesday",
         "Thursday", "Friday", "Saturday"][this.getDay()];
@@ -84,6 +98,7 @@ Object.defineProperties(Date.prototype, {
   },
 
   $tomorrow: {
+    enumerable: false,
     get: function() {
       return new Date(
         this.getFullYear(),
@@ -98,6 +113,7 @@ Object.defineProperties(Date.prototype, {
   },
 
   $yesterday: {
+    enumerable: false,
     get: function() {
       return new Date(
         this.getFullYear(),
@@ -114,32 +130,43 @@ Object.defineProperties(Date.prototype, {
 
 Object.defineProperties(Location.prototype, {
   $params: {
+    enumerable: false,
     get: function() {
       return Sprinkles.QueryString.parse(this.search);
     }
   }
 });
 
-Node.prototype.$removeChildren = function() {
-  while (this.hasChildNodes()) {
-    this.removeChild(this.lastChild);
-  }
-};
-
-Number.prototype.$ordinalize = function() {
-  var abs = Math.abs(this);
-
-  if ((abs % 100) >= 11 && (abs % 100) <= 13) {
-    return this + "th";
-  } else {
-    switch (abs % 10) {
-      case 1:  return this + "st";
-      case 2:  return this + "nd";
-      case 3:  return this + "rd";
-      default: return this + "th";
+Object.defineProperties(Node.prototype, {
+  $removeChildren: {
+    enumerable: false,
+    value: function() {
+      while (this.hasChildNodes()) {
+        this.removeChild(this.lastChild);
+      }
     }
   }
-};
+});
+
+Object.defineProperties(Number.prototype, {
+  $ordinalize: {
+    enumerable: false,
+    value: function() {
+      var abs = Math.abs(this);
+
+      if ((abs % 100) >= 11 && (abs % 100) <= 13) {
+        return this + "th";
+      } else {
+        switch (abs % 10) {
+          case 1:  return this + "st";
+          case 2:  return this + "nd";
+          case 3:  return this + "rd";
+          default: return this + "th";
+        }
+      }
+    }
+  }
+});
 
 Object.defineProperties(Object.prototype, {
   $forEach: {

@@ -1,17 +1,25 @@
-Array.prototype.$flatten = function() {
-  return this.reduce(function(a, b) {
-    return a.concat(b);
-  }, []);
-};
+Object.defineProperties(Array.prototype, {
+  $flatten: {
+    enumerable: false,
+    value: function() {
+      return this.reduce(function(a, b) {
+        return a.concat(b);
+      }, []);
+    }
+  },
 
-Array.prototype.$groupBy = function(accumulator) {
-  var result = {};
+  $groupBy: {
+    enumerable: false,
+    value: function(accumulator) {
+      var result = {};
 
-  this.forEach(function(n) {
-    var key = accumulator(n);
-    if (result[key] === undefined) result[key] = [];
-    result[key].push(n);
-  });
+      this.forEach(function(n) {
+        var key = accumulator(n);
+        if (result[key] === undefined) result[key] = [];
+        result[key].push(n);
+      });
 
-  return result;
-};
+      return result;
+    }
+  }
+});
