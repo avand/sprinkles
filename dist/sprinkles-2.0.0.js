@@ -165,6 +165,13 @@ Object.defineProperties(Number.prototype, {
         }
       }
     }
+  },
+
+  $round: {
+    enumerable: false,
+    value: function(decimalPlaces) {
+      return parseFloat(this.toFixed(decimalPlaces));
+    }
   }
 });
 

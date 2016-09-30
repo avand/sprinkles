@@ -41,5 +41,25 @@ describe("Number.prototype", function() {
       n = 13; assert.equal(n.$ordinalize(), "13th");
       n = 13; assert.equal(n.$ordinalize(), "13th");
     });
-  })
+  });
+
+  describe("$round()", function() {
+    it("rounds down to the nearest integer", function() {
+      n = 123.456; assert.equal(n.$round(), 123);
+    });
+
+    it("rounds up to the nearest integer", function() {
+      n = 123.8; assert.equal(n.$round(), 124);
+    });
+
+    it("rounds to the specified number of decimal places", function() {
+      n = 123.456; assert.equal(n.$round(1), 123.5);
+      n = 123.45115; assert.equal(n.$round(3), 123.451);
+    });
+
+    it("rounds negative numbers", function() {
+      n = -123.45; assert.equal(n.$round(), -123);
+      n = -123.95; assert.equal(n.$round(), -124);
+    });
+  });
 });
