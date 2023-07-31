@@ -135,7 +135,7 @@ ul.$removeChildren(); // Removes all the list items (clears the list)
 
 ## Object Extensions
 
-In Ruby, there's little distinction between looping over an array or a hash — you call the same method (i.e. `each()`). The difference is the signature of the callback function. For an array, the callback receives one primary argument (each item in the aray); for a hash, the callback recieves two arguments (each key value pair in the hash). Sprinkles adds **`$forEach()`** to `Object.prototype` so that you can similarly loop through the keys and values of any object.
+In Ruby, there's little distinction between looping over an array or a hash — you call the same method (i.e. `each()`). The difference is the signature of the callback function. For an array, the callback receives one primary argument (each item in the array); for a hash, the callback recieves two arguments (each key value pair in the hash). Sprinkles adds **`$forEach()`** to `Object.prototype` so that you can similarly loop through the keys and values of any object.
 
 ``` js
 var object = { a: 1, b: 2, c: 3 },
